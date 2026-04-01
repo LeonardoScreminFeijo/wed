@@ -19,6 +19,7 @@ A base do site (Front-end) já está construída utilizando uma arquitetura modu
 * **📅 Integração com Google Agenda:** Botão interativo que gera automaticamente um evento na agenda do convidado com data, horário, local e descrição do casamento.
 * **🗺️ Mapa Integrado (Safe iframe):** Google Maps da chácara embarcado nativamente com travas de CSS (`max-width` e `flex-shrink`) para garantir que não quebre o layout em telas menores.
 * **📖 Timeline Interativa "Z-Pattern" (Nossa História):** Uma linha do tempo desenvolvida do zero (sem bibliotecas externas) onde os convidados clicam em uma foto para ler aquele capítulo da história. Conta com animações suaves de zoom, transparência e desfoque dinâmico (Blur/Grayscale) nos itens inativos.
+* **Rodapé (Footer):** Fechamento do site com nossas iniciais e um design elegante.
 
 ---
 
@@ -30,7 +31,6 @@ Como ainda temos tempo até 2027, o site continuará crescendo. Aqui está o nos
 - [ ] **Lista de Presentes:** Integração com plataformas de cotas de lua de mel ou link para presentes físicos.
 - [ ] **Confirmação de Presença (RSVP):** Formulário integrado (via API, Firebase ou Google Forms) para os convidados confirmarem presença.
 - [ ] **Animações de Scroll (AOS):** Implementação da biblioteca *Animate On Scroll* para que os elementos surjam suavemente conforme o usuário desce a página.
-- [ ] **Rodapé (Footer):** Fechamento do site com nossas iniciais e um design elegante.
 
 ---
 

@@ -1,6 +1,5 @@
 @import "./variables.css";
 
-/* Reset básico para todos os navegadores se comportarem bem */
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +29,7 @@ h1, h2 {
 .layout-wrapper {
   display: flex;
   min-height: 100vh;
-  overflow: hidden; /* ← adicione essa linha */
+  overflow: hidden;
 }
 
 .sidebar {
@@ -76,10 +75,10 @@ h1, h2 {
   flex: 1;
   overflow-x: hidden;
   padding: 40px;
-  min-width: 0; /* ← essa linha é a chave! */
+  min-width: 0;
 }
 
-/* Ajustes para o menu não espremer a tela no celular */
+/* Ajustes para o menu não zuae a tela no celular */
 @media (max-width: 768px) {
   .layout-wrapper { flex-direction: column; }
   .sidebar { 
@@ -109,10 +108,9 @@ h1, h2 {
   background-image: url("../assets/img/foto-casal.webp");
   background-size: cover;
   background-position: center;
-  margin: -40px -40px 0 -40px; /* se tiver esse margin negativo, remova */
+  margin: -40px -40px 0 -40px; 
 }
 
-/* O filtro quentinho sobre a foto para o texto ficar legível */
 .hero-section::before {
   content: "";
   position: absolute;
@@ -155,7 +153,7 @@ h1, h2 {
 .time-box p { font-size: 0.9rem; color: var(--color-coral); text-transform: uppercase; }
 
 .section-container {
-  padding: 80px 20px;
+  padding: 20px 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -168,7 +166,7 @@ h1, h2 {
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 50px;
-  align-items: stretch; /* Garante que os cards fiquem da mesma altura */
+  align-items: stretch;
 }
 
 .evento-card {
@@ -205,7 +203,7 @@ h1, h2 {
   font-size: 0.85rem;
   text-transform: uppercase;
   font-weight: bold;
-  margin-top: auto; /* Empurra o botão sempre para o final do card */
+  margin-top: auto;
   transition: background 0.3s ease;
 }
 
@@ -222,6 +220,36 @@ h1, h2 {
   height: 450px;
   display: block;
   border: 0;
+}
+
+/* ==========================================
+   Rodapé (Footer)
+   ========================================== */
+.site-footer {
+  margin-top: 80px;
+  padding: 40px 20px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(253, 197, 102, 0.4); 
+}
+
+.site-footer p {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.footer-names {
+  font-family: var(--font-titles);
+  color: var(--color-wine) !important;
+  font-size: 1.4rem !important;
+  font-weight: bold;
+}
+
+.footer-hashtag {
+  color: var(--color-coral) !important;
+  letter-spacing: 1px;
+  font-style: italic;
+  margin-top: 15px !important;
 }
 
 /* ==========================================
@@ -356,10 +384,11 @@ h1, h2 {
 }
 
 .timeline-track.has-active .timeline-item.active .timeline-content {
-  transform: translateX(-50%) scale(1.4); /* O zoom maravilhoso */
+  transform: translateX(-50%) scale(1.4);
 }
 
 .timeline-item.active .timeline-content img {
   border-color: var(--color-wine);
   box-shadow: 0 20px 40px rgba(136, 10, 31, 0.5);
 }
+
