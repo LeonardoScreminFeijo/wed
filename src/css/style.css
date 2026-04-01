@@ -595,3 +595,100 @@ h2 {
   gap: 6px;
   margin-top: 10px;
 }
+
+/* ==========================================
+   Formulário de RSVP
+   ========================================== */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(253, 197, 102, 0.4);
+  box-shadow: 0 10px 30px rgba(136, 10, 31, 0.05);
+  text-align: left;
+}
+
+.input-group {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-row .input-group {
+  flex: 1;
+}
+
+.form-container label,
+.radio-title {
+  font-weight: bold;
+  color: var(--color-wine);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: #fafafa;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+  outline: none;
+  border-color: var(--color-coral);
+  background-color: white;
+}
+
+.radio-group {
+  background: rgba(253, 197, 102, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: normal !important;
+  color: var(--text-dark) !important;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--color-coral);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background-color: var(--color-wine);
+}
+
+@media (max-width: 768px) {
+  .input-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

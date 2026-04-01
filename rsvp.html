@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirme sua Presença | Ana & Leo</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="layout-wrapper">
+      <nav class="sidebar">
+        <a href="index.html" class="logo-link">
+          <h2 class="sidebar-title">A & L</h2>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="nossa-historia.html">Nossa História</a></li>
+          <li><a href="dicas.html">Dicas e Hospedagem</a></li>
+          <li><a href="rsvp.html" class="active">Confirmar Presença</a></li>
+        </ul>
+      </nav>
+
+      <main class="main-content">
+        <section class="section-container">
+          <h1 class="section-title">Confirme sua Presença</h1>
+          <p style="margin-bottom: 40px; font-size: 1.1rem">
+            Por favor, confirme sua presença até o dia
+            <strong>24 de Março de 2027</strong>.
+          </p>
+
+          <div class="form-container">
+            <form id="form-rsvp" class="rsvp-form">
+              <div class="input-group">
+                <label for="nome">Nome Completo (Titular do Convite) *</label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  required
+                  placeholder="Ex: João da Silva"
+                />
+              </div>
+
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="adultos">Nº de Adultos (Incluindo você) *</label>
+                  <input
+                    type="number"
+                    id="adultos"
+                    name="adultos"
+                    required
+                    min="1"
+                    max="10"
+                    value="1"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="criancas">Nº de Crianças (Até 10 anos)</label>
+                  <input
+                    type="number"
+                    id="criancas"
+                    name="criancas"
+                    min="0"
+                    max="10"
+                    value="0"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group radio-group">
+                <p class="radio-title">Você poderá comparecer? *</p>
+                <label class="radio-label">
+                  <input type="radio" name="presenca" value="Sim" required />
+                  <span>Sim, com certeza estarei lá! 🥂</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="presenca" value="Não" />
+                  <span>Infelizmente não poderei ir 😔</span>
+                </label>
+              </div>
+
+              <div class="input-group">
+                <label for="mensagem"
+                  >Deixe uma mensagem para os noivos (Opcional)</label
+                >
+                <textarea
+                  id="mensagem"
+                  name="mensagem"
+                  rows="3"
+                  placeholder="Escreva algo carinhoso..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                Confirmar Presença
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <p>Feito com ❤️ para o nosso Grande Dia</p>
+          <p class="footer-names">Ana & Leo © 2027</p>
+          <p class="footer-hashtag">#CasamentoAnaELeo</p>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

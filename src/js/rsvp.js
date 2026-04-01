@@ -1,0 +1,47 @@
+export function iniciarRSVP() {
+  const form = document.getElementById("form-rsvp");
+  if (!form) return;
+
+  const inputNome = document.getElementById("nome");
+  if (inputNome) {
+    inputNome.addEventListener("input", function () {
+      // Esta linha mágica apaga em tempo real tudo que NÃO for letra, acento ou espaço
+      this.value = this.value.replace(
+        /[^a-zA-ZáàâãéêíïóôõöúçñÁÀÂÃÉÊÍÏÓÔÕÖÚÇÑ\s]/g,
+        "",
+      );
+    });
+  }
+
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycby9XdpouoFRoGevKoDjgzCFUa7IvwgsaCfDCyfsm3gYZOO-iMwKTYSmEmsYG-PvN2jDCA/exec";
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const btnSubmit = document.querySelector(".btn-submit");
+    const textoOriginal = btnSubmit.innerText;
+
+    btnSubmit.innerText = "Enviando...";
+    btnSubmit.disabled = true;
+
+    const formData = new FormData(form);
+    fetch(scriptURL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    })
+      .then(() => {
+        alert("Presença confirmada com sucesso! Muito obrigado.");
+        form.reset();
+        btnSubmit.innerText = textoOriginal;
+        btnSubmit.disabled = false;
+      })
+      .catch((error) => {
+        console.error("Erro!", error.message);
+        alert("Ops! Houve um erro ao enviar. Tente novamente.");
+        btnSubmit.innerText = textoOriginal;
+        btnSubmit.disabled = false;
+      });
+  });
+}
