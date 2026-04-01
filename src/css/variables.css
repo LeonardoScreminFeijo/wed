@@ -1,0 +1,22 @@
+:root {
+    /* 
+       Paleta de Cores
+       */
+       
+    /* Cores da referencia */
+    --color-wine: #880a1f;      /* Vermelho escuro/Vinho */
+    --color-pink: #e82c50;      /* Rosa vibrante */
+    --color-coral: #fd5d3d;     /* Laranja avermelhado */
+    --color-orange: #fd921e;    /* Laranja quente */
+    --color-yellow: #fdc566;    /* Amarelo/Pêssego claro */
+
+    /* Tons Neutros para o Fundo e Textos*/
+    --bg-light: #FFFCF9;        /* off-white claro e quente para fundo */
+    --text-dark: #3A2E2C;       /* Marrom bem escuro para textos (mais suave que preto) */
+    
+    /* ==========================================
+       Tipografia
+       ========================================== */
+    --font-titles: 'Playfair Display', serif;
+    --font-text: 'Lato', sans-serif;
+}

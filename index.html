@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana & Leo | Nosso Casamento</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layout-wrapper">
+        <nav class="sidebar">
+            <a href="index.html" class="logo-link">
+                <h2 class="sidebar-title">A & L</h2>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="nossa-historia.html">Nossa História</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <p class="pre-title">Save the Date</p>
+                    <h1>Ana Carolina e Leonardo</h1>
+                    <p>Chácara Doce Recanto • Curitiba, PR</p>
+                    <div id="countdown" class="countdown-container"></div>
+                </div>
+            </section>
+
+            <section id="o-evento" class="section-container">
+                <h2 class="section-title">O Grande Dia</h2>
+                
+                <div class="evento-grid">
+                    <div class="evento-card">
+                        <img src="./src/assets/icons/calendar-heart.svg" alt="Calendário" class="evento-icon">
+                        <h3>Quando?</h3>
+                        <p>Sábado, 24 de Abril de 2027</p>
+                        <p class="hora">Às 16:00 horas</p>
+                        <a href="#" id="btn-calendar" class="btn-small">Adicionar ao Calendário</a>
+                    </div>
+
+                    <div class="evento-card">
+                        <img src="./src/assets/icons/map-pin.svg" alt="Mapa" class="evento-icon">
+                        <h3>Onde?</h3>
+                        <p>Chácara Doce Recanto</p>
+                        <p>R. Pedro Pilato, 630/B - Umbará, Curitiba - PR</p>
+                        <a href="https://maps.google.com/..." target="_blank" class="btn-small">Ver no Google Maps</a>
+                    </div>
+
+                    <div class="evento-card">
+                        <img src="./src/assets/icons/dress-code.svg" class="evento-icon" />
+                        <h3>Traje</h3>
+                        <p>Passeio Completo / Social</p>
+                        <p class="dica">
+                            Uma dica: o evento será em uma chácara, prefira sapatos com salto
+                            grosso!
+                        </p>
+                    </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.725914510158!2d-49.291100925480656!3d-25.580783977465973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dcffdc6f777daf%3A0x91020a270854b90b!2sCh%C3%A1cara%20Doce%20Recanto!5e0!3m2!1spt-BR!2sbr!4v1775037374671!5m2!1spt-BR!2sbr" 
+                        style="border:0;" 
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

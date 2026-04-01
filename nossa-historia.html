@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História | Ana & Leo</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layout-wrapper">
+        <nav class="sidebar">
+            <a href="index.html" class="logo-link">
+                <h2 class="sidebar-title">A & L</h2>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="nossa-historia.html" class="active">Nossa História</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <section class="section-container">
+                <h1 class="section-title">Nossa História</h1>
+                
+                <div id="story-display" class="story-display">
+                    <h3>Toque em uma foto para viajar no tempo conosco...</h3>
+                    <p></p>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <div class="timeline-track">
+                        <div class="timeline-line"></div>
+                        
+                        <div class="timeline-item item-down" data-story="Nossos caminhos se cruzaram pela primeira vez em Curitiba. Foi o início de uma amizade que logo se transformou em algo mais forte.">
+                            <div class="timeline-marker"><div class="dot"></div></div>
+                            <div class="timeline-content">
+                                <img src="./src/assets/img/foto-casal.webp" alt="Início">
+                                <p class="year-label">2022</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item item-up" data-story="O primeiro beijo oficial, marcando o início de nossa jornada como namorados. Um dia inesquecível!">
+                            <div class="timeline-content">
+                                <img src="./src/assets/img/foto-casal.webp" alt="Namoro">
+                                <p class="year-label">2024</p>
+                            </div>
+                            <div class="timeline-marker"><div class="dot"></div></div>
+                        </div>
+
+                        <div class="timeline-item item-down" data-story="Com o coração batendo forte, demos o 'SIM' mais importante de nossas vidas.">
+                            <div class="timeline-marker"><div class="dot"></div></div>
+                            <div class="timeline-content">
+                                <img src="./src/assets/img/foto-casal.webp" alt="Noivado">
+                                <p class="year-label">2026</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
