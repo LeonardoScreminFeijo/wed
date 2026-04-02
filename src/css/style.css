@@ -692,3 +692,341 @@ h2 {
     gap: 0;
   }
 }
+
+/* ==========================================
+   Modal de Login
+   ========================================== */
+
+/* Overlay (fundo escurecido) */
+.login-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(58, 46, 44, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.login-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Card central */
+.login-modal-card {
+  background: #fffcf9;
+  border-radius: 24px;
+  padding: 50px 45px 40px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  box-shadow:
+    0 30px 60px rgba(136, 10, 31, 0.18),
+    0 0 0 1px rgba(253, 197, 102, 0.4);
+  transform: translateY(30px) scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.login-modal-overlay.active .login-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Animação de erro (shake) */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.login-modal-card.shake {
+  animation: shake 0.5s ease;
+}
+
+/* Botão fechar */
+.login-modal-fechar {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: #b0a09e;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.login-modal-fechar:hover {
+  background: rgba(253, 93, 61, 0.1);
+  color: var(--color-coral);
+}
+
+/* Cabeçalho do modal */
+.login-modal-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.login-modal-initials {
+  font-family: var(--font-titles);
+  font-size: 2.2rem;
+  color: var(--color-wine);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.login-modal-header h2 {
+  font-size: 1.5rem;
+  color: var(--color-wine);
+  margin-bottom: 6px;
+}
+
+.login-modal-subtitulo {
+  font-size: 0.9rem;
+  color: #a08e8c;
+  letter-spacing: 0.5px;
+}
+
+/* Grupos de input */
+.login-input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input-group label {
+  font-weight: bold;
+  font-size: 0.88rem;
+  color: var(--color-wine);
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.login-input-group input {
+  padding: 13px 16px;
+  border: 1.5px solid #e8dbd9;
+  border-radius: 12px;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--text-dark);
+  background: white;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  width: 100%;
+}
+
+.login-input-group input:focus {
+  outline: none;
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 3px rgba(253, 93, 61, 0.12);
+}
+
+/* Wrapper da senha (input + botão olho) */
+.login-senha-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-senha-wrapper input {
+  padding-right: 46px;
+}
+
+.btn-toggle-senha {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
+  color: #a08e8c;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.btn-toggle-senha:hover {
+  color: var(--color-coral);
+}
+
+/* Mensagem de erro */
+.login-erro {
+  color: var(--color-coral);
+  font-size: 0.875rem;
+  min-height: 20px;
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* Botão de submissão */
+.btn-login-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--color-coral), var(--color-wine));
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: var(--font-text);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 6px 20px rgba(136, 10, 31, 0.2);
+}
+
+.btn-login-submit:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(136, 10, 31, 0.3);
+}
+
+.btn-login-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   Sidebar — Link de Login / Logout / Nome
+   ========================================== */
+.sidebar-auth {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(253, 197, 102, 0.3);
+}
+
+#nome-usuario-logado {
+  display: none;
+  font-size: 0.82rem;
+  color: #a08e8c;
+  padding: 6px 20px 2px;
+  text-align: left;
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+#link-login,
+#link-logout {
+  display: block;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-wine);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+  cursor: pointer;
+}
+
+#link-login:hover {
+  background: rgba(253, 93, 61, 0.1);
+  color: var(--color-coral);
+}
+
+#link-logout {
+  display: none;
+  color: #a08e8c;
+  font-weight: normal;
+  font-size: 0.9rem;
+}
+
+#link-logout:hover {
+  background: rgba(253, 93, 61, 0.07);
+  color: var(--color-coral);
+}
+
+@media (max-width: 768px) {
+  .login-modal-card {
+    padding: 40px 28px 32px;
+  }
+
+  .sidebar-auth {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    border-left: 1px solid rgba(253, 197, 102, 0.3);
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #nome-usuario-logado {
+    padding: 0 8px;
+    white-space: nowrap;
+  }
+
+  #link-login,
+  #link-logout {
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================
+   DESLOGADO
+   ========================================= */
+.user-logged-in .item-restrito,
+.item-restrito {
+  display: none;
+}
+
+.item-restrito,
+#link-logout,
+#nome-usuario-logado {
+  display: none;
+}
+
+#link-login {
+  display: inline-block;
+}
+
+/* =========================================
+   LOGADO
+   ========================================= */
+.user-logged-in .item-restrito,
+.user-logged-in #link-logout,
+.user-logged-in #nome-usuario-logado {
+  display: block;
+}
+
+.user-logged-in #link-login {
+  display: none;
+}

@@ -9,6 +9,13 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      if (sessionStorage.getItem("wedding_auth_user")) {
+        document.documentElement.classList.add("user-logged-in");
+      }
+    </script>
+
+    <link rel="stylesheet" href="./src/css/style.css" />
   </head>
   <body>
     <div class="layout-wrapper">
@@ -22,8 +29,15 @@
             <a href="nossa-historia.html" class="active">Nossa História</a>
           </li>
           <li><a href="dicas.html">Dicas e Hospedagem</a></li>
-          <li><a href="rsvp.html">Confirmar Presença</a></li>
+          <li class="item-restrito">
+            <a href="rsvp.html">Confirmar Presença</a>
+          </li>
         </ul>
+        <div class="sidebar-auth">
+          <span id="nome-usuario-logado"></span>
+          <a href="javascript:void(0)" id="link-login">🔐 Fazer Login</a>
+          <a href="javascript:void(0)" id="link-logout">Sair →</a>
+        </div>
       </nav>
 
       <main class="main-content">

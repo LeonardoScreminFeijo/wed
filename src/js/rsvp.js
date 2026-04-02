@@ -1,11 +1,14 @@
+import { protegerPagina } from "./login.js";
+
 export function iniciarRSVP() {
   const form = document.getElementById("form-rsvp");
   if (!form) return;
 
+  if (!protegerPagina()) return;
+
   const inputNome = document.getElementById("nome");
   if (inputNome) {
     inputNome.addEventListener("input", function () {
-      // Esta linha mágica apaga em tempo real tudo que NÃO for letra, acento ou espaço
       this.value = this.value.replace(
         /[^a-zA-ZáàâãéêíïóôõöúçñÁÀÂÃÉÊÍÏÓÔÕÖÚÇÑ\s]/g,
         "",
@@ -13,8 +16,7 @@ export function iniciarRSVP() {
     });
   }
 
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycby9XdpouoFRoGevKoDjgzCFUa7IvwgsaCfDCyfsm3gYZOO-iMwKTYSmEmsYG-PvN2jDCA/exec";
+  const scriptURL = import.meta.env.VITE_API_URL_RSVP;
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();

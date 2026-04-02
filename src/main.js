@@ -4,6 +4,7 @@ import { configurarBotaoCalendario } from "./js/calendar.js";
 import { iniciarTimeline } from "./js/timeline.js";
 import { iniciarSanfona } from "./js/accordion.js";
 import { iniciarRSVP } from "./js/rsvp.js";
+import { iniciarLogin } from "./js/login.js";
 
 const countdownElement = document.getElementById("countdown");
 if (countdownElement) {
@@ -11,8 +12,8 @@ if (countdownElement) {
   iniciarContagem(dataCasamento);
 }
 
-// Inicia os outros scripts
 configurarBotaoCalendario();
 iniciarTimeline();
 iniciarSanfona();
 iniciarRSVP();
+iniciarLogin();
