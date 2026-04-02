@@ -17,3 +17,30 @@ iniciarTimeline();
 iniciarSanfona();
 iniciarRSVP();
 iniciarLogin();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnMenu = document.getElementById("btn-menu-global");
+  const layoutWrapper = document.getElementById("app-layout");
+
+  if (btnMenu && layoutWrapper) {
+    btnMenu.addEventListener("click", () => {
+      layoutWrapper.classList.toggle("menu-aberto");
+    });
+
+    const linksMenu = document.querySelectorAll(".nav-links a");
+    linksMenu.forEach((link) => {
+      link.addEventListener("click", () => {
+        layoutWrapper.classList.remove("menu-aberto");
+      });
+    });
+
+    const conteudoPrincipal = document.querySelector(".main-content");
+    if (conteudoPrincipal) {
+      conteudoPrincipal.addEventListener("click", () => {
+        if (layoutWrapper.classList.contains("menu-aberto")) {
+          layoutWrapper.classList.remove("menu-aberto");
+        }
+      });
+    }
+  }
+});

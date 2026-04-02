@@ -11,11 +11,22 @@
     />
   </head>
   <body>
-    <div class="layout-wrapper">
+    <button
+      id="btn-menu-global"
+      class="btn-menu-flutuante"
+      aria-label="Abrir Menu"
+    >
+      <span class="linha"></span>
+      <span class="linha"></span>
+      <span class="linha"></span>
+    </button>
+
+    <div class="layout-wrapper" id="app-layout">
       <nav class="sidebar">
         <a href="index.html" class="logo-link">
           <h2 class="sidebar-title">A & L</h2>
         </a>
+
         <ul class="nav-links">
           <li><a href="index.html">Início</a></li>
           <li><a href="nossa-historia.html">Nossa História</a></li>
@@ -27,6 +38,7 @@
             <a href="gifts.html" class="active">Lista de Presentes</a>
           </li>
         </ul>
+
         <div class="sidebar-auth">
           <span id="nome-usuario-logado"></span>
           <a href="javascript:void(0)" id="link-login">🔐 Fazer Login</a>

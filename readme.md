@@ -20,7 +20,7 @@ O objetivo deste site é centralizar todas as informações para os nossos convi
 
 A base do site (Front-end) já está construída utilizando uma arquitetura modular e boas práticas de **Clean Code**, focando na responsividade (Mobile-First).
 
-- **🎨 UI/UX Responsiva:** Layout flexível com uma Sidebar (Menu Lateral) no desktop que se transforma em um menu superior compacto em dispositivos móveis.
+- **🎨 UI/UX Responsiva:** Layout flexível com uma Sidebar Oculta (Menu Lateral) tanto no Desktop quanto Mobile.
 - **⏱️ Contagem Regressiva em Tempo Real:** Um relógio dinâmico construído em JavaScript que calcula os dias, horas, minutos e segundos até o "Sim".
 - **📅 Integração com Google Agenda:** Botão interativo que gera automaticamente um evento na agenda do convidado com data, horário, local e descrição do casamento.
 - **🗺️ Mapa Integrado (Safe iframe):** Google Maps da chácara embarcado nativamente com travas de CSS (`max-width` e `flex-shrink`) para garantir que não quebre o layout em telas menores.

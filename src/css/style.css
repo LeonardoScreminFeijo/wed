@@ -64,6 +64,85 @@ h2 {
   display: block;
 }
 
+/* =========================================
+   NAVEGAÇÃO OFF-CANVAS (PC E MOBILE)
+   ========================================= */
+
+/* 1. O Botão Flutuante */
+.btn-menu-flutuante {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.btn-menu-flutuante .linha {
+  width: 22px;
+  height: 2px;
+  background-color: #8b0000;
+  transition: all 0.3s ease;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  z-index: 1000;
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-content {
+  margin-left: 0;
+  width: 100%;
+  transition:
+    margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.4s ease;
+  padding-top: 60px;
+}
+
+/* =========================================
+   ESTADO: QUANDO O MENU ESTÁ ABERTO
+   ========================================= */
+
+.layout-wrapper.menu-aberto .sidebar {
+  left: 0;
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+}
+.layout-wrapper.menu-aberto .btn-menu-flutuante {
+  left: 260px;
+}
+
+@media (min-width: 769px) {
+  .layout-wrapper.menu-aberto .main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-wrapper.menu-aberto .main-content {
+    margin-left: 0;
+  }
+  .layout-wrapper.menu-aberto .btn-menu-flutuante {
+    left: 200px;
+  }
+}
+
 /* Destaca a página em que o convidado está no momento */
 .nav-links a:hover,
 .nav-links a.active {
@@ -85,22 +164,31 @@ h2 {
     flex-direction: column;
   }
   .sidebar {
-    width: 100%;
-    padding: 20px;
-    border-right: none;
-    border-bottom: 2px solid rgba(253, 197, 102, 0.3);
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    z-index: 1000;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #fdfbf7;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
   }
   .sidebar-title {
     margin-bottom: 0;
     font-size: 1.8rem;
   }
   .nav-links {
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    list-style: none;
+    padding: 0;
   }
   .main-content {
     padding: 20px 10px;
