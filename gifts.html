@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dicas e Hospedagem | Ana & Leo</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="layout-wrapper">
+      <nav class="sidebar">
+        <a href="index.html" class="logo-link">
+          <h2 class="sidebar-title">A & L</h2>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="nossa-historia.html">Nossa História</a></li>
+          <li><a href="dicas.html">Dicas e Hospedagem</a></li>
+          <li class="item-restrito">
+            <a href="rsvp.html">Confirmar Presença</a>
+          </li>
+          <li class="item-restrito">
+            <a href="gifts.html" class="active">Lista de Presentes</a>
+          </li>
+        </ul>
+        <div class="sidebar-auth">
+          <span id="nome-usuario-logado"></span>
+          <a href="javascript:void(0)" id="link-login">🔐 Fazer Login</a>
+          <a href="javascript:void(0)" id="link-logout">Sair →</a>
+        </div>
+      </nav>
+
+      <main class="main-content">
+        <section class="section-container">
+          <h1 class="section-title">Lista de Presentes</h1>
+          <p style="margin-bottom: 40px; font-size: 1.1rem; text-align: center">
+            A sua presença é o nosso maior presente! Mas se desejar contribuir
+            para a nossa lua de mel, separamos algumas cotas abaixo.
+          </p>
+
+          <div class="grid-presentes" id="grid-presentes">
+            <div class="card-presente">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/airplane.jpg"
+                  alt="Ícone ilustrativo de passagem aérea"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Passagens Aéreas</h3>
+              <p class="presente-desc">Ajude a nos levar para o paraíso!</p>
+              <span class="presente-valor">R$ 500,00</span>
+              <button class="btn-copiar-pix" data-item="teste">
+                <span class="btn-texto">Copiar PIX</span>
+              </button>
+            </div>
+
+            <div class="card-presente">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/branco.jpg"
+                  alt="Ícone ilustrativo de passagem aérea"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Cota para ir de branco no casamento</h3>
+              <p class="presente-desc">Vai ser incoveniente...</p>
+              <span class="presente-valor">R$ 5000,00</span>
+              <button class="btn-copiar-pix" data-item="teste">
+                <span class="btn-texto">Copiar PIX</span>
+              </button>
+            </div>
+
+            <div class="card-presente">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/suborno.jpg"
+                  alt="Ícone ilustrativo de passagem aérea"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Suborno para o DJ</h3>
+              <p class="presente-desc">Garante que o DJ vai tocar aquela música brega que você ama (ou o hino do seu time).</p>
+              <span class="presente-valor">R$ 150,00</span>
+              <button class="btn-copiar-pix" data-item="teste">
+                <span class="btn-texto">Copiar PIX</span>
+              </button>
+            </div>
+
+            <div class="card-presente">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/pobre.jpg"
+                  alt="Ícone ilustrativo de pobreza"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Só pra não dizer que não dei nada</h3>
+              <p class="presente-desc">Ta duro dorme...</p>
+              <span class="presente-valor">R$ 10,00</span>
+              <button class="btn-copiar-pix" data-item="teste">
+                <span class="btn-texto">Copiar PIX</span>
+              </button>
+            </div>
+
+            </div>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <p>Feito com ❤️ para o nosso Grande Dia</p>
+          <p class="footer-names">Ana & Leo © 2027</p>
+          <p class="footer-hashtag">#CasamentoAnaELeo</p>
+        </footer>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/presentes.js"></script>
+  </body>
+</html>

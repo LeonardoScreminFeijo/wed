@@ -29,6 +29,7 @@ A base do site (Front-end) já está construída utilizando uma arquitetura modu
 - **🔎 Aba "Dicas e Hospedagem":** Uma seção de FAQ alertando sobre hotéis, salões de beleza e logística. (WIP)
 - **🔐 Sistema de Autenticação Serverless (AWS):** Área VIP exclusiva para convidados protegida via integração com AWS API Gateway. O sistema conta com bloqueio de páginas nativo (Route Guards), gerenciamento de sessão (sessionStorage), timeout automático de inatividade (5 minuto) e técnicas avançadas de CSS direto no <head> para evitar o "piscar" da tela (FOUC) ao revelar os menus ocultos.
 - **📋 Confirmação de Presença (RSVP):** Formulário integrado para os convidados confirmarem presença (Área exclusiva para convidados).
+- **🎁 Lista de Presentes:** Criação de uma página de presentes divertida com integração para pagamento via PIX. (WIP)
 
 ---
 
@@ -36,7 +37,8 @@ A base do site (Front-end) já está construída utilizando uma arquitetura modu
 
 Como ainda temos tempo até 2027, o site continuará crescendo. Aqui está o nosso Roadmap de desenvolvimento:
 
-- [ ] **Lista de Presentes:** Integração com plataformas de cotas de lua de mel ou link para presentes físicos.
+- [ ] **🔎 Aba "Dicas e Hospedagem":** Dicas de salão de beleza, maquiadoras ainda serão adicionadas
+- [ ] **Lista de Presentes:** Possível adição de pagamento via cartão de crédito
 - [ ] **Animações de Scroll (AOS):** Implementação da biblioteca _Animate On Scroll_ para que os elementos surjam suavemente conforme o usuário desce a página.
 
 ---
@@ -88,6 +90,8 @@ Crie um arquivo chamado .env na raiz do projeto.
 Copie o conteúdo do arquivo .env.example para dentro dele.
 
 Substitua os valores falsos pelas suas próprias URLs de API (AWS e Google Apps Script).
+
+Crie códigos PIX no seu banco de preferência (via pagamento por QRCode) e coloque o código na .env
 
 5. Rode o servidor de desenvolvimento:
    npm run dev
