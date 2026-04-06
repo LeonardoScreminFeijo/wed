@@ -1231,7 +1231,6 @@ h2 {
   z-index: 10;
 }
 
-/* Fita adesiva (Washi Tape) no topo de cada recado */
 .mural-card::before {
   content: "";
   position: absolute;
@@ -1240,7 +1239,7 @@ h2 {
   transform: translateX(-50%) rotate(-3deg);
   width: 80px;
   height: 25px;
-  background-color: rgba(253, 197, 102, 0.4); /* Usa sua cor amarela/pêssego */
+  background-color: rgba(253, 197, 102, 0.4);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }

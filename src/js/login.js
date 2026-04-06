@@ -32,7 +32,7 @@ export function atualizarSidebar() {
     }
   } else {
     document.documentElement.classList.remove("user-logged-in");
-    document.documentElement.classList.remove("user-is-admin"); // Limpa ao sair
+    document.documentElement.classList.remove("user-is-admin");
 
     if (nomeUsuario) {
       nomeUsuario.textContent = "";
