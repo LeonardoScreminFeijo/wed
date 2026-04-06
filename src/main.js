@@ -5,6 +5,7 @@ import { iniciarTimeline } from "./js/timeline.js";
 import { iniciarSanfona } from "./js/accordion.js";
 import { iniciarRSVP } from "./js/rsvp.js";
 import { iniciarLogin } from "./js/login.js";
+import { iniciarMural } from "./js/mural.js";
 
 const countdownElement = document.getElementById("countdown");
 if (countdownElement) {
@@ -44,3 +45,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+iniciarMural();

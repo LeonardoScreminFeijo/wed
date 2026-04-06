@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Confirme sua Presença | Ana & Leo</title>
+    <title>Mural de Recados | Ana & Leo</title>
     <link rel="stylesheet" href="./src/css/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@300;400;700&display=swap"
@@ -33,13 +33,13 @@
           <li><a href="nossa-historia.html">Nossa História</a></li>
           <li><a href="dicas.html">Dicas e Hospedagem</a></li>
           <li class="item-restrito">
-            <a href="rsvp.html" class="active">Confirmar Presença</a>
+            <a href="rsvp.html">Confirmar Presença</a>
           </li>
           <li class="item-restrito">
             <a href="gifts.html">Lista de Presentes</a>
           </li>
           <li class="item-restrito">
-            <a href="mural.html">Mural de Recados</a>
+            <a href="mural.html" class="active">Mural de Recados</a>
           </li>
         </ul>
 
@@ -52,80 +52,41 @@
 
       <main class="main-content">
         <section class="section-container">
-          <h1 class="section-title">Confirme sua Presença</h1>
+          <h1 class="section-title">Mural de Recados</h1>
           <p style="margin-bottom: 40px; font-size: 1.1rem">
-            Por favor, confirme sua presença até o dia
-            <strong>24 de Março de 2027</strong>.
+            Deixe um conselho, uma memória ou seus votos de felicidade para nós!
           </p>
 
           <div class="form-container">
-            <form id="form-rsvp" class="rsvp-form">
+            <form id="form-mural">
               <div class="input-group">
-                <label for="nome">Nome Completo (Titular do Convite) *</label>
+                <label for="assinatura-mural">Assinado por *</label>
                 <input
                   type="text"
-                  id="nome"
-                  name="nome"
+                  id="assinatura-mural"
+                  name="assinatura"
                   required
-                  placeholder="Ex: João da Silva"
+                  placeholder="Seu nome, apelido ou família..."
+                  maxlength="50"
                 />
               </div>
 
-              <div class="input-row">
-                <div class="input-group">
-                  <label for="adultos">Nº de Adultos (Incluindo você) *</label>
-                  <input
-                    type="number"
-                    id="adultos"
-                    name="adultos"
-                    required
-                    min="1"
-                    max="10"
-                    value="1"
-                  />
-                </div>
-                <div class="input-group">
-                  <label for="criancas">Nº de Crianças (Até 10 anos)</label>
-                  <input
-                    type="number"
-                    id="criancas"
-                    name="criancas"
-                    min="0"
-                    max="10"
-                    value="0"
-                  />
-                </div>
-              </div>
-
-              <div class="input-group radio-group">
-                <p class="radio-title">Você poderá comparecer? *</p>
-                <label class="radio-label">
-                  <input type="radio" name="presenca" value="Sim" required />
-                  <span>Sim, com certeza estarei lá! 🥂</span>
-                </label>
-                <label class="radio-label">
-                  <input type="radio" name="presenca" value="Não" />
-                  <span>Infelizmente não poderei ir 😔</span>
-                </label>
-              </div>
-
               <div class="input-group">
-                <label for="mensagem"
-                  >Deixe uma mensagem para os noivos (Opcional)</label
-                >
+                <label for="mensagem-mural">Seu Recado *</label>
                 <textarea
-                  id="mensagem"
+                  id="mensagem-mural"
                   name="mensagem"
-                  rows="3"
-                  placeholder="Escreva algo carinhoso..."
+                  rows="4"
+                  maxlength="300"
+                  required
+                  placeholder="Escreva sua mensagem aqui (máx. 300 caracteres)..."
                 ></textarea>
               </div>
-
-              <button type="submit" class="btn-submit">
-                Confirmar Presença
-              </button>
+              <button type="submit" class="btn-submit">Enviar Recado</button>
             </form>
           </div>
+
+          <div id="mural-grid" class="mural-grid"></div>
         </section>
 
         <footer class="site-footer">

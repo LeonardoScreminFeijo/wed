@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.API_URL_LOGIN;
+const API_URL = import.meta.env.VITE_API_URL_LOGIN;
 
 const CHAVE = "wedding_auth_user";
 
@@ -233,7 +233,7 @@ export function iniciarLogin() {
 let inatividadeTimer;
 
 function configurarTimerInatividade() {
-  const TEMPO_LIMITE = 5 * 60 * 1000;
+  const TEMPO_LIMITE = 100000 * 60 * 1000;
 
   function resetarTimer() {
     clearTimeout(inatividadeTimer);

@@ -1188,3 +1188,77 @@ h2 {
 .user-logged-in #link-login {
   display: none;
 }
+
+/* =========================================
+   MURAL DE RECADOS
+   ========================================= */
+.mural-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+  padding: 20px 10px;
+}
+
+.mural-card {
+  background: white;
+  padding: 25px 20px 35px 20px;
+  border-radius: 4px;
+  box-shadow: 0 8px 20px rgba(136, 10, 31, 0.08);
+  border: 1px solid rgba(253, 197, 102, 0.3);
+  position: relative;
+  transition:
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Efeito de inclinação alternada para parecer um quadro de avisos */
+.mural-card:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+.mural-card:nth-child(even) {
+  transform: rotate(3deg);
+}
+.mural-card:nth-child(3n) {
+  transform: rotate(-1deg);
+}
+
+.mural-card:hover {
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 0 12px 25px rgba(136, 10, 31, 0.15);
+  z-index: 10;
+}
+
+/* Fita adesiva (Washi Tape) no topo de cada recado */
+.mural-card::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 80px;
+  height: 25px;
+  background-color: rgba(253, 197, 102, 0.4); /* Usa sua cor amarela/pêssego */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.mural-texto {
+  font-family: var(--font-titles);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.mural-autor {
+  font-weight: bold;
+  color: var(--color-wine);
+  text-align: right;
+  font-size: 0.95rem;
+  text-transform: capitalize;
+}

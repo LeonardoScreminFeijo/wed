@@ -30,6 +30,7 @@ A base do site (Front-end) já está construída utilizando uma arquitetura modu
 - **🔐 Sistema de Autenticação Serverless (AWS):** Área VIP exclusiva para convidados protegida via integração com AWS API Gateway. O sistema conta com bloqueio de páginas nativo (Route Guards), gerenciamento de sessão (sessionStorage), timeout automático de inatividade (5 minuto) e técnicas avançadas de CSS direto no <head> para evitar o "piscar" da tela (FOUC) ao revelar os menus ocultos.
 - **📋 Confirmação de Presença (RSVP):** Formulário integrado para os convidados confirmarem presença (Área exclusiva para convidados).
 - **🎁 Lista de Presentes:** Criação de uma página de presentes divertida com integração para pagamento via PIX. (WIP)
+- **📝 Mural de recados:** Página para recados e lembranças para os noivos.
 
 ---
 

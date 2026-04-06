@@ -16,7 +16,7 @@ export function iniciarRSVP() {
     });
   }
 
-  const scriptURL = import.meta.env.API_URL_RSVP;
+  const scriptURL = import.meta.env.VITE_API_URL_RSVP;
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
