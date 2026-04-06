@@ -1,4 +1,6 @@
 import "./css/style.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { iniciarContagem } from "./js/countdown.js";
 import { configurarBotaoCalendario } from "./js/calendar.js";
 import { iniciarTimeline } from "./js/timeline.js";
@@ -18,6 +20,17 @@ iniciarTimeline();
 iniciarSanfona();
 iniciarRSVP();
 iniciarLogin();
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 50,
+    });
+    AOS.refresh();
+  }, 100);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const btnMenu = document.getElementById("btn-menu-global");

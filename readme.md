@@ -31,6 +31,7 @@ A base do site (Front-end) já está construída utilizando uma arquitetura modu
 - **📋 Confirmação de Presença (RSVP):** Formulário integrado para os convidados confirmarem presença (Área exclusiva para convidados).
 - **🎁 Lista de Presentes:** Criação de uma página de presentes divertida com integração para pagamento via PIX. (WIP)
 - **📝 Mural de recados:** Página para recados e lembranças para os noivos.
+- **Animações de Scroll (AOS):** Implementação da biblioteca _Animate On Scroll_ para que os elementos surjam suavemente conforme o usuário desce a página.
 
 ---
 
@@ -40,7 +41,6 @@ Como ainda temos tempo até 2027, o site continuará crescendo. Aqui está o nos
 
 - [ ] **🔎 Aba "Dicas e Hospedagem":** Dicas de salão de beleza, maquiadoras ainda serão adicionadas
 - [ ] **Lista de Presentes:** Possível adição de pagamento via cartão de crédito
-- [ ] **Animações de Scroll (AOS):** Implementação da biblioteca _Animate On Scroll_ para que os elementos surjam suavemente conforme o usuário desce a página.
 
 ---
 
