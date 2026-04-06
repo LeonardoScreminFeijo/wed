@@ -10,17 +10,29 @@ export function obterUsuario() {
   return sessionStorage.getItem(CHAVE);
 }
 
+export function isNoivos() {
+  const usuario = obterUsuario();
+  return usuario === "ana" || usuario === "leo";
+}
+
 export function atualizarSidebar() {
   const nomeUsuario = document.getElementById("nome-usuario-logado");
 
   if (estaLogado()) {
     document.documentElement.classList.add("user-logged-in");
 
+    if (isNoivos()) {
+      document.documentElement.classList.add("user-is-admin");
+    } else {
+      document.documentElement.classList.remove("user-is-admin");
+    }
+
     if (nomeUsuario) {
       nomeUsuario.textContent = "Olá, " + obterUsuario() + "!";
     }
   } else {
     document.documentElement.classList.remove("user-logged-in");
+    document.documentElement.classList.remove("user-is-admin"); // Limpa ao sair
 
     if (nomeUsuario) {
       nomeUsuario.textContent = "";
@@ -233,7 +245,7 @@ export function iniciarLogin() {
 let inatividadeTimer;
 
 function configurarTimerInatividade() {
-  const TEMPO_LIMITE = 100000 * 60 * 1000;
+  const TEMPO_LIMITE = 5 * 60 * 1000;
 
   function resetarTimer() {
     clearTimeout(inatividadeTimer);

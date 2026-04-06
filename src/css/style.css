@@ -1215,7 +1215,6 @@ h2 {
   justify-content: space-between;
 }
 
-/* Efeito de inclinação alternada para parecer um quadro de avisos */
 .mural-card:nth-child(odd) {
   transform: rotate(-2deg);
 }
@@ -1261,4 +1260,42 @@ h2 {
   text-align: right;
   font-size: 0.95rem;
   text-transform: capitalize;
+}
+
+.btn-apagar-mensagem {
+  display: none !important;
+  position: absolute;
+  bottom: 12px;
+  left: 15px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.btn-apagar-mensagem:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  color: var(--color-wine);
+}
+
+.user-is-admin .btn-apagar-mensagem {
+  display: block !important;
+}
+
+/* =========================================
+   ÁREA ADMINISTRATIVA (ANA & LEO)
+   ========================================= */
+
+.item-admin,
+.btn-apagar-mensagem {
+  display: none !important;
+}
+
+.user-is-admin .item-admin,
+.user-is-admin .btn-apagar-mensagem {
+  display: inline-block !important;
 }

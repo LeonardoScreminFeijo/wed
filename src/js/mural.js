@@ -1,4 +1,6 @@
-import { protegerPagina, obterUsuario } from "./login.js";
+import { protegerPagina, obterUsuario, isNoivos } from "./login.js";
+
+const API_URL = import.meta.env.VITE_API_URL_MURAL;
 
 export function iniciarMural() {
   const formMural = document.getElementById("form-mural");
@@ -9,48 +11,143 @@ export function iniciarMural() {
 
   let recados = [];
 
+  async function carregarRecadosDaNuvem() {
+    try {
+      muralGrid.innerHTML =
+        '<p style="text-align:center; width:100%; font-style:italic;">Carregando mensagens com muito amor... ❤️</p>';
+
+      const resposta = await fetch(API_URL);
+
+      if (resposta.ok) {
+        const dados = await resposta.json();
+        recados = dados.recados || [];
+        renderizarRecados();
+      } else {
+        muralGrid.innerHTML =
+          '<p style="text-align:center; color:var(--color-wine);">Erro ao carregar o mural da nuvem.</p>';
+      }
+    } catch (error) {
+      console.error("Erro na conexão:", error);
+      muralGrid.innerHTML =
+        '<p style="text-align:center; color:#555;">Falha de conexão com o banco de dados.</p>';
+    }
+  }
+
+  // =========================================
+  // RENDERIZAÇÃO NA TELA
+  // =========================================
   function renderizarRecados() {
     muralGrid.innerHTML = "";
+
+    if (recados.length === 0) {
+      muralGrid.innerHTML =
+        '<p style="text-align:center; width: 100%; font-style:italic;">Nenhum recado ainda. Seja o primeiro!</p>';
+      return;
+    }
+
     recados.forEach((recado) => {
       const card = document.createElement("div");
       card.className = "mural-card";
+
       card.innerHTML = `
         <p class="mural-texto">"${recado.texto}"</p>
         <p class="mural-autor">— ${recado.autor}</p>
+        <button class="btn-apagar-mensagem" data-id="${recado.id}" title="Excluir recado para TODOS">🗑️</button>
       `;
+
       muralGrid.appendChild(card);
     });
-  }
-  renderizarRecados();
 
+    ativarBotoesExclusao();
+  }
+
+  // =========================================
+  // 2. EXCLUIR MENSAGEM DA NUVEM (DELETE)
+  // =========================================
+  function ativarBotoesExclusao() {
+    const botoesLixeira = muralGrid.querySelectorAll(".btn-apagar-mensagem");
+
+    botoesLixeira.forEach((botao) => {
+      botao.addEventListener("click", async function () {
+        const idParaApagar = this.getAttribute("data-id");
+
+        if (
+          confirm(
+            "🚨 Atenção: Tem certeza que deseja apagar esta mensagem para TODOS os convidados?",
+          )
+        ) {
+          try {
+            this.innerText = "⏳";
+            this.disabled = true;
+
+            const usuarioLogado = obterUsuario();
+
+            const resposta = await fetch(
+              `${API_URL}?id=${idParaApagar}&user=${usuarioLogado}`,
+              {
+                method: "DELETE",
+              },
+            );
+
+            if (resposta.ok) {
+              recados = recados.filter((recado) => recado.id !== idParaApagar);
+              renderizarRecados();
+            } else {
+              alert(
+                "A nuvem bloqueou a exclusão. Apenas noivos podem fazer isso!",
+              );
+              renderizarRecados();
+            }
+          } catch (erro) {
+            alert("Erro de conexão ao tentar apagar na nuvem.");
+            renderizarRecados();
+          }
+        }
+      });
+    });
+  }
+
+  carregarRecadosDaNuvem();
+
+  // =========================================
+  // 3. ENVIAR NOVA MENSAGEM (POST)
+  // =========================================
   formMural.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const btnSubmit = document.querySelector(".btn-submit");
     const textoOriginal = btnSubmit.innerText;
-
     const inputAssinatura = document.getElementById("assinatura-mural");
     const inputMensagem = document.getElementById("mensagem-mural");
 
-    btnSubmit.innerText = "Enviando...";
+    btnSubmit.innerText = "Salvando na Nuvem...";
     btnSubmit.disabled = true;
 
+    // Criamos o objeto que vai para a nuvem
     const novoRecado = {
+      id: Date.now().toString(),
       autor: inputAssinatura.value.trim(),
       texto: inputMensagem.value.trim(),
     };
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      const resposta = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(novoRecado),
+      });
 
-      recados.unshift(novoRecado);
-      renderizarRecados();
-
-      alert("Recado enviado com sucesso! Ele já está no nosso mural.");
-      formMural.reset();
+      if (resposta.ok) {
+        recados.unshift(novoRecado);
+        renderizarRecados();
+        alert("Mensagem enviada com sucesso aos noivos ❤️");
+        formMural.reset();
+      } else {
+        alert("Erro na nuvem ao tentar salvar o recado.");
+      }
     } catch (error) {
       console.error("Erro ao enviar recado", error);
-      alert("Ops! Houve um erro ao enviar. Tente novamente.");
+      alert("Ops! Houve um erro de conexão com o banco de dados.");
     } finally {
       btnSubmit.innerText = textoOriginal;
       btnSubmit.disabled = false;
