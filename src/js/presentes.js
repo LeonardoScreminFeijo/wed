@@ -1,7 +1,7 @@
 const pixChaves = {
-  teste: import.meta.env.VITE_PIX_TESTE,
-  jantar: import.meta.env.VITE_PIX_JANTAR,
-  sofa: import.meta.env.VITE_PIX_SOFA,
+  teste: import.meta.env.PIX_TESTE,
+  jantar: import.meta.env.PIX_JANTAR,
+  sofa: import.meta.env.PIX_SOFA,
 };
 
 document.addEventListener("DOMContentLoaded", () => {

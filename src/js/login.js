@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL_LOGIN;
+const API_URL = import.meta.env.API_URL_LOGIN;
 
 const CHAVE = "wedding_auth_user";
 
@@ -102,13 +102,35 @@ export function criarModal() {
     .getElementById("form-login")
     .addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      const erro = document.getElementById("login-erro");
+      const btn = document.getElementById("btn-login-submit");
+
+      // ==========================================
+      // 1. VERIFICAÇÃO DE BLOQUEIO (FORÇA BRUTA)
+      // ==========================================
+      const bloqueioAte = localStorage.getItem("wedding_login_lock");
+
+      if (bloqueioAte && Date.now() < parseInt(bloqueioAte)) {
+        const tempoRestante = Math.ceil(
+          (parseInt(bloqueioAte) - Date.now()) / 60000,
+        );
+        erro.textContent = `Muitas tentativas falhas. Tente novamente em ${tempoRestante} minuto(s).`;
+
+        const card = document.querySelector(".login-modal-card");
+        card.classList.add("shake");
+        setTimeout(() => card.classList.remove("shake"), 600);
+      } else if (bloqueioAte) {
+        localStorage.removeItem("wedding_login_lock");
+        localStorage.removeItem("wedding_login_attempts");
+      }
+      // ==========================================
+
       const loginVal = document
         .getElementById("login-input")
         .value.trim()
         .toLowerCase();
       const senhaVal = document.getElementById("senha-input").value;
-      const erro = document.getElementById("login-erro");
-      const btn = document.getElementById("btn-login-submit");
 
       btn.textContent = "Verificando...";
       btn.disabled = true;
@@ -126,12 +148,31 @@ export function criarModal() {
         const dados = await resposta.json();
 
         if (dados.sucesso) {
+          localStorage.removeItem("wedding_login_attempts");
+          localStorage.removeItem("wedding_login_lock");
+
           sessionStorage.setItem(CHAVE, loginVal);
           atualizarSidebar();
           fecharModal();
           document.getElementById("form-login").reset();
         } else {
-          erro.textContent = dados.mensagem || "Login ou senha incorretos.";
+          let tentativas = parseInt(
+            localStorage.getItem("wedding_login_attempts") || "0",
+          );
+          tentativas++;
+          localStorage.setItem("wedding_login_attempts", tentativas);
+
+          if (tentativas >= 3) {
+            const tempoBloqueio = Date.now() + 1 * 60 * 1000;
+            localStorage.setItem("wedding_login_lock", tempoBloqueio);
+            erro.textContent =
+              "Muitas tentativas falhas. Tente novamente em 5 minutos.";
+          } else {
+            erro.textContent =
+              dados.mensagem ||
+              `Login incorreto. Você tem mais ${3 - tentativas} tentativa(s).`;
+          }
+
           const card = document.querySelector(".login-modal-card");
           card.classList.add("shake");
           setTimeout(() => card.classList.remove("shake"), 600);
@@ -140,8 +181,15 @@ export function criarModal() {
         console.error("Erro ao conectar na API:", err);
         erro.textContent = "Erro de conexão. Tente novamente.";
       } finally {
-        btn.textContent = "Entrar";
-        btn.disabled = false;
+        if (
+          !localStorage.getItem("wedding_login_lock") ||
+          Date.now() > parseInt(localStorage.getItem("wedding_login_lock"))
+        ) {
+          btn.textContent = "Entrar";
+          btn.disabled = false;
+        } else {
+          btn.textContent = "Bloqueado";
+        }
       }
     });
 }
