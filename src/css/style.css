@@ -921,8 +921,16 @@ h2 {
 }
 
 .presente-icone {
-  font-size: 3rem;
   margin-bottom: 1rem;
+  width: 100%;
+}
+
+.presente-icone img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
 }
 
 .presente-desc {
@@ -1246,6 +1254,11 @@ h2 {
 
   [data-aos-delay] {
     transition-delay: 0s !important;
+  }
+
+  .card-presente[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .sidebar-auth {
