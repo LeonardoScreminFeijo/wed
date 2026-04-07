@@ -458,6 +458,9 @@ h2 {
   overflow-x: auto;
   padding: 38px 0;
   scrollbar-width: none;
+  overflow-y: hidden;
+  touch-action: pan-y pan-x;
+  -webkit-overflow-scrolling: touch;
 }
 
 .timeline-track {
