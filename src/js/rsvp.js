@@ -1,6 +1,7 @@
 import { dispararConfetes } from "./confetti.js";
 import { mostrarSucesso, mostrarErro } from "./toast.js";
 import { protegerPagina, isTestUser, obterUsuario } from "./login.js";
+import { Logger } from "./logger.js";
 
 export function iniciarRSVP() {
   const form = document.getElementById("form-rsvp");
@@ -41,16 +42,15 @@ export function iniciarRSVP() {
                 </label>
             </div>
 
-            ${
-              i === 1
-                ? `
+            ${i === 1
+          ? `
             <div class="input-group">
                 <label>Deixe uma mensagem para os noivos (Opcional)</label>
                 <textarea name="mensagem_titular" rows="3" placeholder="Escreva algo carinhoso..."></textarea>
             </div>
             `
-                : ""
-            }
+          : ""
+        }
         </div>
       `;
     }
@@ -126,12 +126,14 @@ export function iniciarRSVP() {
       mode: "no-cors",
     })
       .then(() => {
+        Logger.info("RSVP_SUCESSO", { adultos: inputAdultos.value, criancas: inputCriancas.value });
         dispararConfetes();
         mostrarSucesso("Presenças confirmadas com sucesso! Muito obrigado.");
         form.reset();
         renderizarConvidados(); // Reseta os cartões visuais também
       })
       .catch((error) => {
+        Logger.error("RSVP_FALHA_CONEXAO", error);
         console.error("Erro!", error.message);
         mostrarErro("Ops! Houve um erro ao enviar. Tente novamente.");
       })

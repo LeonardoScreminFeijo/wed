@@ -1,3 +1,5 @@
+import { Logger } from "./logger.js";
+
 const API_URL = import.meta.env.VITE_API_URL_LOGIN;
 
 const CHAVE = "wedding_auth_user";
@@ -164,6 +166,7 @@ export function criarModal() {
         const dados = await resposta.json();
 
         if (dados.sucesso) {
+          Logger.info("LOGIN_SUCESSO", { usuario: loginVal });
           localStorage.removeItem("wedding_login_attempts");
           localStorage.removeItem("wedding_login_lock");
 
@@ -172,6 +175,7 @@ export function criarModal() {
           fecharModal();
           document.getElementById("form-login").reset();
         } else {
+          Logger.warn("LOGIN_FALHA_SENHA_INCORRETA", { tentativa: loginVal });
           let tentativas = parseInt(
             localStorage.getItem("wedding_login_attempts") || "0",
           );
