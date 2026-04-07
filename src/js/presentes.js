@@ -1,3 +1,5 @@
+import { dispararConfetes } from "./confetti.js";
+
 const pixChaves = {
   teste: import.meta.env.VITE_PIX_TESTE,
   jantar: import.meta.env.VITE_PIX_TESTE,
@@ -25,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         await navigator.clipboard.writeText(codigoPix);
+
+        dispararConfetes();
 
         botao.classList.add("copiado");
         botao.querySelector(".btn-texto").innerText = "✔ Copiado!";

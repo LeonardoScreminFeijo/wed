@@ -1,4 +1,5 @@
 import { protegerPagina } from "./login.js";
+import { dispararConfetes } from "./confetti.js";
 
 export function iniciarRSVP() {
   const form = document.getElementById("form-rsvp");
@@ -34,6 +35,7 @@ export function iniciarRSVP() {
       mode: "no-cors",
     })
       .then(() => {
+        dispararConfetes();
         alert("Presença confirmada com sucesso! Muito obrigado.");
         form.reset();
         btnSubmit.innerText = textoOriginal;
