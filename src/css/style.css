@@ -34,12 +34,22 @@ h2 {
 }
 
 .sidebar {
-  width: 190px;
-  background: white;
-  padding: 40px 20px;
-  border-right: 2px solid rgba(253, 197, 102, 0.3);
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 260px;
+  margin: 0;
+  height: 100%;
+  height: 100dvh;
+  z-index: 1000;
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #fdfbf7;
   display: flex;
   flex-direction: column;
+  padding: 30px 25px;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
 }
 
 .sidebar-title {
@@ -1201,8 +1211,13 @@ h2 {
    ========================================== */
 .sidebar-auth {
   margin-top: auto;
-  padding-top: 20px;
+  padding: 20px 0 10px 0;
+  border: none;
   border-top: 1px solid rgba(253, 197, 102, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
 }
 
 #nome-usuario-logado {
@@ -1265,7 +1280,6 @@ h2 {
     margin-top: auto;
     padding-top: 20px;
     border-top: 1px solid rgba(253, 197, 102, 0.3);
-    border-left: 1px solid rgba(253, 197, 102, 0.3);
     padding-left: 10px;
     display: flex;
     flex-direction: column;
