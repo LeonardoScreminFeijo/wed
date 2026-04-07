@@ -1,21 +1,47 @@
 export function configurarBotaoCalendario() {
-  const btn = document.getElementById("btn-calendar");
-  if (!btn) return;
+  const btnCalendario = document.getElementById("btn-calendario");
 
-  const titulo = encodeURIComponent("Casamento Ana Carolina e Leonardo 💍");
-  const dataInicio = "20270424T190000Z";
-  const dataFim = "20270425T050000Z";
-  const detalhes = encodeURIComponent(
-    "Estamos muito felizes em celebrar nosso amor com você!",
-  );
-  const local = encodeURIComponent(
-    "Chácara Doce Recanto, R. Pedro Pilato, 630/B - Umbará, Curitiba - PR",
-  );
+  if (!btnCalendario) return;
 
-  const urlGoogleCalendar = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${titulo}&dates=${dataInicio}/${dataFim}&details=${detalhes}&location=${local}`;
+  btnCalendario.addEventListener("click", (event) => {
+    const titulo = "Casamento Ana & Léo";
+    const detalhes =
+      "Venha celebrar o nosso amor! Mal podemos esperar para viver este momento convosco.";
+    const local = "Sítio das Flores, São Paulo - SP";
 
-  btn.addEventListener("click", (evento) => {
-    evento.preventDefault();
-    window.open(urlGoogleCalendar, "_blank");
+    const dataInicio = "20270424T190000Z";
+    const dataFim = "20270425T025900Z";
+
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    if (isIOS) {
+      const icsConteudo = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "BEGIN:VEVENT",
+        `DTSTART:${dataInicio}`,
+        `DTEND:${dataFim}`,
+        `SUMMARY:${titulo}`,
+        `DESCRIPTION:${detalhes}`,
+        `LOCATION:${local}`,
+        "END:VEVENT",
+        "END:VCALENDAR",
+      ].join("\n");
+
+      const blob = new Blob([icsConteudo], {
+        type: "text/calendar;charset=utf-8",
+      });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "casamento-ana-leo.ics");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      const urlGoogle = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo)}&details=${encodeURIComponent(detalhes)}&location=${encodeURIComponent(local)}&dates=${dataInicio}/${dataFim}`;
+      window.open(urlGoogle, "_blank");
+    }
   });
 }
