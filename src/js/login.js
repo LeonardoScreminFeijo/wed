@@ -15,6 +15,10 @@ export function isNoivos() {
   return usuario === "ana" || usuario === "leo";
 }
 
+export function isTestUser() {
+  return obterUsuario() === "teste";
+}
+
 export function atualizarSidebar() {
   const nomeUsuario = document.getElementById("nome-usuario-logado");
 

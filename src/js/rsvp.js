@@ -1,6 +1,6 @@
-import { protegerPagina } from "./login.js";
 import { dispararConfetes } from "./confetti.js";
 import { mostrarSucesso, mostrarErro } from "./toast.js";
+import { protegerPagina, isTestUser, obterUsuario } from "./login.js";
 
 export function iniciarRSVP() {
   const form = document.getElementById("form-rsvp");
@@ -62,12 +62,12 @@ export function iniciarRSVP() {
             <h4>Criança ${i} (Até 10 anos)</h4>
             
             <div class="input-group">
-                <label>Nome da Criança&nbsp</label>
+                <label>Nome da Criança&nbsp*</label>
                 <input type="text" name="nome_crianca_${i}" required placeholder="Ex: Maria da Silva">
             </div>
 
             <div class="input-group radio-group">
-                <p class="radio-title">A criança irá comparecer?&nbsp</p>
+                <p class="radio-title">A criança irá comparecer?&nbsp*</p>
                 <label class="radio-label">
                     <input type="radio" name="presenca_crianca_${i}" value="Sim" required />
                     <span>Sim, vai festejar conosco! 🎈</span>
@@ -102,6 +102,18 @@ export function iniciarRSVP() {
     btnSubmit.disabled = true;
 
     const formData = new FormData(form);
+    formData.append("usuario", obterUsuario());
+    if (isTestUser()) {
+      setTimeout(() => {
+        dispararConfetes();
+        mostrarSucesso("[MODO TESTE] Presença confirmada simulada!");
+        form.reset();
+        renderizarConvidados();
+        btnSubmit.innerText = textoOriginal;
+        btnSubmit.disabled = false;
+      }, 1000);
+      return;
+    }
     fetch(scriptURL, {
       method: "POST",
       body: formData,

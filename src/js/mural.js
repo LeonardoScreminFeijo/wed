@@ -1,4 +1,4 @@
-import { protegerPagina, obterUsuario, isNoivos } from "./login.js";
+import { protegerPagina, obterUsuario, isNoivos, isTestUser } from "./login.js";
 import { mostrarSucesso, mostrarErro } from "./toast.js";
 
 const API_URL = import.meta.env.VITE_API_URL_MURAL;
@@ -9,6 +9,17 @@ export function iniciarMural() {
 
   if (!formMural || !muralGrid) return;
   if (!protegerPagina()) return;
+
+  if (isTestUser()) {
+    const aviso = document.createElement("p");
+    aviso.innerHTML =
+      "<strong>⚠️ Modo Teste Ativo:</strong> Sua mensagem aparecerá por 5 segundos e não será salva no banco oficial.";
+    aviso.style.color = "#d97706";
+    aviso.style.fontSize = "0.9rem";
+    aviso.style.textAlign = "center";
+    aviso.style.marginBottom = "15px";
+    formMural.prepend(aviso);
+  }
 
   let recados = [];
 
@@ -129,7 +140,26 @@ export function iniciarMural() {
       id: Date.now().toString(),
       autor: inputAssinatura.value.trim(),
       texto: inputMensagem.value.trim(),
+      usuario: obterUsuario(),
     };
+
+    if (isTestUser()) {
+      setTimeout(() => {
+        recados.unshift(novoRecado);
+        renderizarRecados();
+        mostrarSucesso("[TESTE] Mensagem enviada ❤️");
+        formMural.reset();
+
+        btnSubmit.innerText = textoOriginal;
+        btnSubmit.disabled = false;
+
+        setTimeout(() => {
+          recados = recados.filter((r) => r.id !== novoRecado.id);
+          renderizarRecados();
+        }, 5000);
+      }, 500);
+      return;
+    }
 
     try {
       const resposta = await fetch(API_URL, {

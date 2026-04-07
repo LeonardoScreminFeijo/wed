@@ -1,4 +1,6 @@
 import { dispararConfetes } from "./confetti.js";
+import { isTestUser } from "./login.js";
+import { mostrarErro } from "./toast.js";
 
 const pixChaves = {
   teste: import.meta.env.VITE_PIX_TESTE,
@@ -26,12 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        await navigator.clipboard.writeText(codigoPix);
+        if (!isTestUser()) {
+          await navigator.clipboard.writeText(codigoPix);
+        }
 
         dispararConfetes();
 
         botao.classList.add("copiado");
-        botao.querySelector(".btn-texto").innerText = "✔ Copiado!";
+        botao.querySelector(".btn-texto").innerText = isTestUser()
+          ? "✔ Copiado! (Teste)"
+          : "✔ Copiado!";
 
         setTimeout(() => {
           botao.classList.remove("copiado");
