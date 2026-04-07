@@ -567,7 +567,6 @@ h2 {
   margin-top: 10px;
 }
 
-/* Efeitos de Interação (Borrar e Destacar) */
 .timeline-track.has-active .timeline-item {
   opacity: 0.4;
   filter: blur(2px) grayscale(50%);
@@ -586,6 +585,52 @@ h2 {
 .timeline-item.active .timeline-content img {
   border-color: var(--color-wine);
   box-shadow: 0 20px 40px rgba(136, 10, 31, 0.5);
+}
+
+.timeline-container {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-wine);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.3s ease,
+    background 0.3s ease;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-seta.visivel {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-seta:hover {
+  background: var(--color-coral);
+}
+
+.seta-esquerda {
+  left: -10px;
+}
+.seta-direita {
+  right: -10px;
 }
 
 /* ==========================================

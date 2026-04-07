@@ -67,16 +67,23 @@
           <h1 class="section-title">Nossa História</h1>
 
           <div id="story-display" class="story-display">
-            <h3>Toque em uma foto para viajar no tempo conosco...</h3>
+            <h3>
+              Arraste para o lado para percorrer por nossa história. Toque em
+              uma foto para viajar no tempo conosco...
+            </h3>
             <p></p>
           </div>
 
-          <div class="timeline-wrapper">
-            <div class="timeline-track">
+          <div class="timeline-container">
+            <button class="scroll-seta seta-esquerda" id="seta-esquerda" aria-label="Rolar para a esquerda">❮</button>
+            <button class="scroll-seta seta-direita" id="seta-direita" aria-label="Rolar para a direita">❯</button>
+
+            <div class="timeline-wrapper" id="timeline-wrapper">
+              <div class="timeline-track">
               <div class="timeline-line"></div>
 
               <div
-                class="timeline-item item-down"
+                class="timeline-item item-up"
                 data-story="Nossos caminhos se cruzaram pela primeira vez em Curitiba. Foi o início de uma amizade que logo se transformou em algo mais forte."
                 data-aos="fade-up"
               >
@@ -88,7 +95,7 @@
               </div>
 
               <div
-                class="timeline-item item-up"
+                class="timeline-item item-down"
                 data-story="O primeiro beijo oficial, marcando o início de nossa jornada como namorados. Um dia inesquecível!"
                 data-aos="fade-down"
               >
@@ -100,7 +107,7 @@
               </div>
 
               <div
-                class="timeline-item item-down"
+                class="timeline-item item-up"
                 data-story="Com o coração batendo forte, demos o 'SIM' mais importante de nossas vidas."
                 data-aos="fade-up"
               >
