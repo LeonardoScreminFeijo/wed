@@ -94,7 +94,13 @@ export function iniciarRSVP() {
   // O Envio do formulário
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-
+    const numAdultos = parseInt(document.getElementById("adultos").value) || 0;
+    if (numAdultos < 1) {
+      mostrarErro(
+        "É necessário incluir pelo menos 1 adulto para confirmar a presença.",
+      );
+      return;
+    }
     const btnSubmit = document.querySelector(".btn-submit");
     const textoOriginal = btnSubmit.innerText;
 
