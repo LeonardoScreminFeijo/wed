@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CasamentoAnaLeo//NONSGML v1.0//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:casamento-ana-leo@anaeleo.com.br
+DTSTAMP:20240101T000000Z
+DTSTART:20270424T190000Z
+DTEND:20270425T030000Z
+SUMMARY:Casamento Ana & Léo
+DESCRIPTION:Venha celebrar o nosso amor! Mal podemos esperar para viver este momento convosco.
+LOCATION:Sítio das Flores, São Paulo - SP
+BEGIN:VALARM
+TRIGGER:-PT24H
+ACTION:DISPLAY
+DESCRIPTION:Lembrete de Casamento
+END:VALARM
+END:VEVENT
+END:VCALENDAR
