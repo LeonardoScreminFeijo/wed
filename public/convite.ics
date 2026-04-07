@@ -9,7 +9,7 @@ DTSTART:20270424T190000Z
 DTEND:20270425T030000Z
 SUMMARY:Casamento Ana & Léo
 DESCRIPTION:Venha celebrar o nosso amor! Mal podemos esperar para viver este momento convosco.
-LOCATION:Sítio das Flores, São Paulo - SP
+LOCATION:Chácara Doce Recanto | Curitiba, PR
 BEGIN:VALARM
 TRIGGER:-PT24H
 ACTION:DISPLAY
