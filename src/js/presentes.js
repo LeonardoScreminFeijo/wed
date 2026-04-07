@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const textoOriginal = botao.querySelector(".btn-texto").innerText;
 
       if (!codigoPix) {
-        alert("Chave PIX não configurada para este item.");
+        mostrarErro("Chave PIX não configurada para este item.");
         console.error(
           `Faltou configurar VITE_PIX_${item.toUpperCase()} no .env`,
         );
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000);
       } catch (err) {
         console.error("Falha ao copiar PIX: ", err);
-        alert(
+        mostrarErro(
           "Não foi possível copiar automaticamente. Selecione o código manualmente: " +
             codigoPix,
         );

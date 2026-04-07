@@ -1,5 +1,6 @@
 import { protegerPagina } from "./login.js";
 import { dispararConfetes } from "./confetti.js";
+import { mostrarSucesso, mostrarErro } from "./toast.js";
 
 export function iniciarRSVP() {
   const form = document.getElementById("form-rsvp");
@@ -36,14 +37,14 @@ export function iniciarRSVP() {
     })
       .then(() => {
         dispararConfetes();
-        alert("Presença confirmada com sucesso! Muito obrigado.");
+        mostrarSucesso("Presença confirmada com sucesso! Muito obrigado.");
         form.reset();
         btnSubmit.innerText = textoOriginal;
         btnSubmit.disabled = false;
       })
       .catch((error) => {
         console.error("Erro!", error.message);
-        alert("Ops! Houve um erro ao enviar. Tente novamente.");
+        mostrarErro("Ops! Houve um erro ao enviar. Tente novamente.");
         btnSubmit.innerText = textoOriginal;
         btnSubmit.disabled = false;
       });

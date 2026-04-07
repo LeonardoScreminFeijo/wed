@@ -8,6 +8,7 @@ import { iniciarSanfona } from "./js/accordion.js";
 import { iniciarRSVP } from "./js/rsvp.js";
 import { iniciarLogin } from "./js/login.js";
 import { iniciarMural } from "./js/mural.js";
+import { iniciarMusica } from "./js/music.js";
 
 const countdownElement = document.getElementById("countdown");
 if (countdownElement) {
@@ -35,6 +36,7 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const btnMenu = document.getElementById("btn-menu-global");
   const layoutWrapper = document.getElementById("app-layout");
+  iniciarMusica();
 
   if (btnMenu && layoutWrapper) {
     btnMenu.addEventListener("click", () => {

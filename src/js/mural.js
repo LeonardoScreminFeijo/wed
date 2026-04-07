@@ -1,4 +1,5 @@
 import { protegerPagina, obterUsuario, isNoivos } from "./login.js";
+import { mostrarSucesso, mostrarErro } from "./toast.js";
 
 const API_URL = import.meta.env.VITE_API_URL_MURAL;
 
@@ -93,13 +94,13 @@ export function iniciarMural() {
               recados = recados.filter((recado) => recado.id !== idParaApagar);
               renderizarRecados();
             } else {
-              alert(
+              mostrarErro(
                 "A nuvem bloqueou a exclusão. Apenas noivos podem fazer isso!",
               );
               renderizarRecados();
             }
           } catch (erro) {
-            alert("Erro de conexão ao tentar apagar na nuvem.");
+            mostrarErro("Erro de conexão ao tentar apagar na nuvem.");
             renderizarRecados();
           }
         }
@@ -140,14 +141,14 @@ export function iniciarMural() {
       if (resposta.ok) {
         recados.unshift(novoRecado);
         renderizarRecados();
-        alert("Mensagem enviada com sucesso aos noivos ❤️");
+        mostrarSucesso("Mensagem enviada com sucesso aos noivos ❤️");
         formMural.reset();
       } else {
-        alert("Erro na nuvem ao tentar salvar o recado.");
+        mostrarErro("Erro na nuvem ao tentar salvar o recado.");
       }
     } catch (error) {
       console.error("Erro ao enviar recado", error);
-      alert("Ops! Houve um erro de conexão com o banco de dados.");
+      mostrarErro("Ops! Houve um erro de conexão com o banco de dados.");
     } finally {
       btnSubmit.innerText = textoOriginal;
       btnSubmit.disabled = false;
