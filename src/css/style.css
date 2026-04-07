@@ -821,6 +821,24 @@ h2 {
   }
 }
 
+.convidado-card {
+  background: #fdfbf7;
+  border: 1px solid rgba(253, 197, 102, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.convidado-card h4 {
+  color: var(--color-wine);
+  margin-bottom: 15px;
+  font-family: var(--font-titles);
+  font-size: 1.3rem;
+  border-bottom: 1px dashed rgba(253, 197, 102, 0.4);
+  padding-bottom: 10px;
+}
+
 /* =========================================
    LISTA DE PRESENTES
    ========================================= */

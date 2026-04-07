@@ -60,17 +60,6 @@
 
           <div class="form-container">
             <form id="form-rsvp" class="rsvp-form">
-              <div class="input-group">
-                <label for="nome">Nome Completo (Titular do Convite) *</label>
-                <input
-                  type="text"
-                  id="nome"
-                  name="nome"
-                  required
-                  placeholder="Ex: João da Silva"
-                />
-              </div>
-
               <div class="input-row">
                 <div class="input-group">
                   <label for="adultos">Nº de Adultos (Incluindo você) *</label>
@@ -79,9 +68,9 @@
                     id="adultos"
                     name="adultos"
                     required
-                    min="1"
+                    min="0"
                     max="10"
-                    value="1"
+                    value="0"
                   />
                 </div>
                 <div class="input-group">
@@ -97,29 +86,7 @@
                 </div>
               </div>
 
-              <div class="input-group radio-group">
-                <p class="radio-title">Você poderá comparecer? *</p>
-                <label class="radio-label">
-                  <input type="radio" name="presenca" value="Sim" required />
-                  <span>Sim, com certeza estarei lá! 🥂</span>
-                </label>
-                <label class="radio-label">
-                  <input type="radio" name="presenca" value="Não" />
-                  <span>Infelizmente não poderei ir 😔</span>
-                </label>
-              </div>
-
-              <div class="input-group">
-                <label for="mensagem"
-                  >Deixe uma mensagem para os noivos (Opcional)</label
-                >
-                <textarea
-                  id="mensagem"
-                  name="mensagem"
-                  rows="3"
-                  placeholder="Escreva algo carinhoso..."
-                ></textarea>
-              </div>
+              <div id="convidados-container"></div>
 
               <button type="submit" class="btn-submit">
                 Confirmar Presença

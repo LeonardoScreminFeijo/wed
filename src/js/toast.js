@@ -10,7 +10,7 @@ export function mostrarSucesso(mensagem) {
     position: "right",
     stopOnFocus: true,
     style: {
-      background: "linear-gradient(to right, var(--color-wine), #962335)",
+      background: "#4caf50",
       borderRadius: "8px",
       boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
       fontFamily: "Lato, sans-serif",
