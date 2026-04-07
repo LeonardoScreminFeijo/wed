@@ -1196,15 +1196,20 @@ h2 {
     padding: 40px 28px 32px;
   }
 
+  [data-aos-delay] {
+    transition-delay: 0s !important;
+  }
+
   .sidebar-auth {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(253, 197, 102, 0.3);
     border-left: 1px solid rgba(253, 197, 102, 0.3);
     padding-left: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 10px;
   }
 
   #nome-usuario-logado {

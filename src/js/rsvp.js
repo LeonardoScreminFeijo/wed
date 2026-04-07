@@ -25,12 +25,12 @@ export function iniciarRSVP() {
             <h4>Adulto ${i} ${i === 1 ? "(Titular)" : ""}</h4>
             
             <div class="input-group">
-                <label>Nome Completo *</label>
+                <label>Nome Completo&nbsp*</label>
                 <input type="text" name="nome_adulto_${i}" required placeholder="Ex: João da Silva">
             </div>
 
             <div class="input-group radio-group">
-                <p class="radio-title">Você poderá comparecer? *</p>
+                <p class="radio-title">Você poderá comparecer?&nbsp*</p>
                 <label class="radio-label">
                     <input type="radio" name="presenca_adulto_${i}" value="Sim" required />
                     <span>Sim, vai festejar conosco! 🎈</span>
@@ -62,12 +62,12 @@ export function iniciarRSVP() {
             <h4>Criança ${i} (Até 10 anos)</h4>
             
             <div class="input-group">
-                <label>Nome da Criança *</label>
+                <label>Nome da Criança&nbsp</label>
                 <input type="text" name="nome_crianca_${i}" required placeholder="Ex: Maria da Silva">
             </div>
 
             <div class="input-group radio-group">
-                <p class="radio-title">A criança irá comparecer? *</p>
+                <p class="radio-title">A criança irá comparecer?&nbsp</p>
                 <label class="radio-label">
                     <input type="radio" name="presenca_crianca_${i}" value="Sim" required />
                     <span>Sim, vai festejar conosco! 🎈</span>
