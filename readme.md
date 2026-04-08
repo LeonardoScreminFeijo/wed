@@ -31,7 +31,8 @@ A base do site (Front-end) já está construída utilizando uma arquitetura modu
 - **📋 Confirmação de Presença (RSVP):** Formulário integrado para os convidados confirmarem presença (Área exclusiva para convidados).
 - **🎁 Lista de Presentes:** Criação de uma página de presentes divertida com integração para pagamento via PIX. (WIP)
 - **📝 Mural de recados:** Página para recados e lembranças para os noivos.
-- **Animações de Scroll (AOS):** Implementação da biblioteca _Animate On Scroll_ para que os elementos surjam suavemente conforme o usuário desce a página.
+- **🖱️ Animações de Scroll (AOS):** Implementação da biblioteca _Animate On Scroll_ para que os elementos surjam suavemente conforme o usuário desce a página.
+- **🗃️ Sistema de log:** Para capturar entradas no site, copias de pix e confirmação de presença.
 
 ---
 
@@ -39,8 +40,22 @@ A base do site (Front-end) já está construída utilizando uma arquitetura modu
 
 Como ainda temos tempo até 2027, o site continuará crescendo. Aqui está o nosso Roadmap de desenvolvimento:
 
+**Planejado**
 - [ ] **🔎 Aba "Dicas e Hospedagem":** Dicas de salão de beleza, maquiadoras ainda serão adicionadas
-- [ ] **Lista de Presentes:** Possível adição de pagamento via cartão de crédito
+- [ ] **🎶 Playlist da festa:** Implementação de um formulário simples onde os convidados poderão sugerir músicas para a pista de dança.
+
+<br>
+
+**Em avaliação**
+- [ ] **💳 Lista de Presentes:** Possível adição de pagamento via cartão de crédito
+- [ ] **☀️ Previsão do tempo:** Consumir uma API de clima para apresentar a previsão do tempo próximo a data.
+- [ ] **📧 Automação de E-mail RSVP:** Fazer com que, ao confirmar a presença, o convidado receba um email automático, confirmando que o nome dele está na lista.
+
+<br>
+
+**Baixa prioridade**
+- [ ] **📱 App:** Transofrmar o site em um aplicativo disponível para Android e iOS
+- [ ] **🫝 QR Code de Entrada:** Geração de QR Code único ao confirmar presença, para entrada no evento
 
 ---
 
@@ -56,7 +71,8 @@ Este projeto optou por não usar frameworks pesados (como React ou Angular) nest
 - **Web Storage API (sessionStorage):** Gerenciamento inteligente de estado de autenticação no lado do cliente (Client-side Auth). Garante a persistência do login temporário e protege rotas privadas sem a dependência de bibliotecas externas ou cookies pesados.
 - **Google Apps Script (Serverless):** Microserviço backend utilizado para capturar e processar os dados do formulário de RSVP (Confirmação de Presença), enviando as respostas diretamente para uma planilha na nuvem sem necessidade de gerenciar um banco de dados relacional.
 - **Node.js & NPM:** Gerenciamento de pacotes e ambiente de execução base para a orquestração do Vite e compilação do projeto para produção (build).
-
+- **Vercel (CI/CD & Hosting):** Utilizado para colocar o site no ar de forma gratuita, com integração contínua do Github.
+- **HTML5 Audio API:** Utilizado de forma nativa para criar o leitor de música ambiente, sem necessidade de utilizar plugins externos.
 ---
 
 ## 🛠️ Como rodar este projeto localmente
