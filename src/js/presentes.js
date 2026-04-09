@@ -1,18 +1,17 @@
 import { dispararConfetes } from "./confetti.js";
 import { isTestUser } from "./login.js";
 import { mostrarErro } from "./toast.js";
-import { Logger } from "./logger.js"
+import { Logger } from "./logger.js";
 
 const pixChaves = {
-  passagem: import.meta.env.VITE_PIX_PASSAGEM,
-  branco: import.meta.env.VITE_PIX_BRANCO,
-  dj: import.meta.env.VITE_PIX_DJ,
-  pobre: import.meta.env.VITE_PIX_POBRE,
-  bebado: import.meta.env.VITE_PIX_BEBADO,
-  mira_buque: import.meta.env.VITE_PIX_MIRA_BUQUE,
-  bagagem: import.meta.env.VITE_PIX_BAGAGEM,
+  passagem: import.meta.env.VITE_PIX_TESTE,
+  branco: import.meta.env.VITE_PIX_TESTE,
+  dj: import.meta.env.VITE_PIX_TESTE,
+  pobre: import.meta.env.VITE_PIX_TESTE,
+  bebado: import.meta.env.VITE_PIX_TESTE,
+  mira_buque: import.meta.env.VITE_PIX_TESTE,
+  bagagem: import.meta.env.VITE_PIX_TESTE,
 };
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const botoesPix = document.querySelectorAll(".btn-copiar-pix");
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         if (!isTestUser()) {
           await navigator.clipboard.writeText(codigoPix);
-
         }
         Logger.info("PIX_COPIADO", { presente: item });
         dispararConfetes();
@@ -46,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
           ? "✔ Copiado! (Teste)"
           : "✔ Copiado!";
 
-
         setTimeout(() => {
           botao.classList.remove("copiado");
           botao.querySelector(".btn-texto").innerText = textoOriginal;
@@ -55,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Falha ao copiar PIX: ", err);
         mostrarErro(
           "Não foi possível copiar automaticamente. Selecione o código manualmente: " +
-          codigoPix,
+            codigoPix,
         );
       }
     });
