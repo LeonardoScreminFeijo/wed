@@ -821,21 +821,36 @@ h2 {
 
 .form-container input[type="text"],
 .form-container input[type="number"],
+.form-container input[type="password"],
 .form-container textarea {
+  /* Alinhamento Total */
+  display: block;
+  width: 100% !important; /* Força a largura total */
+  box-sizing: border-box !important; /* Garante que padding não aumente o tamanho */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  /* Estilização Visual */
   padding: 12px 15px;
   border: 1px solid #ddd;
   border-radius: 10px;
   font-family: var(--font-text);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
   background-color: #fafafa;
+  transition: border-color 0.3s ease;
+
+  /* Comportamento de escrita */
+  resize: vertical;
+  min-height: 50px;
+  max-height: 300px;
 }
 
-.form-container input:focus,
-.form-container textarea:focus {
-  outline: none;
-  border-color: var(--color-coral);
-  background-color: white;
+/* Pequeno ajuste para garantir que o container pai não tenha padding lateral 
+   que afete apenas um dos elementos */
+.input-group {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
 }
 
 .radio-group {
