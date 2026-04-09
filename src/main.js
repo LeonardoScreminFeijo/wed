@@ -33,6 +33,33 @@ window.addEventListener("load", () => {
   }, 100);
 });
 
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+
+if (themeToggle) {
+  // 1. Lê a memória do navegador
+  const currentTheme = localStorage.getItem("theme");
+
+  // 2. Se o utilizador já usava o modo escuro, liga a chave e aplica o tema
+  if (currentTheme === "dark") {
+    body.classList.add("dark-mode");
+    themeToggle.checked = true; // Empurra a bolinha para a direita
+  } else {
+    themeToggle.checked = false; // Mantém a bolinha na esquerda
+  }
+
+  // 3. Ouve o deslizar da chave
+  themeToggle.addEventListener("change", () => {
+    if (themeToggle.checked) {
+      body.classList.add("dark-mode"); // Ativa cores escuras
+      localStorage.setItem("theme", "dark");
+    } else {
+      body.classList.remove("dark-mode"); // Volta para o claro
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const btnMenu = document.getElementById("btn-menu-global");
   const layoutWrapper = document.getElementById("app-layout");

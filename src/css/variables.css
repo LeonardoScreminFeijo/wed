@@ -21,3 +21,14 @@
   --font-titles: "Playfair Display", serif;
   --font-text: "Lato", sans-serif;
 }
+
+/* ==========================================
+   Tema Escuro (Dark Mode)
+   ========================================== */
+.dark-mode {
+  --bg-light: #121212;
+  --text-dark: #fdfbf7;
+
+  /* Ajustes opcionais nas cores de destaque para terem leitura no fundo escuro */
+  --color-wine: #ad0d28;
+}

@@ -11,6 +11,9 @@ body {
   color: var(--text-dark);
   font-family: var(--font-text);
   text-align: center;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }
 
 h1,
@@ -72,6 +75,160 @@ h2 {
   border-radius: 12px;
   transition: background 0.3s ease;
   display: block;
+}
+
+/* =========================================
+   MODO ESCURO (DARK-MODE)
+   ========================================= */
+
+.theme-switch-wrapper {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 1001;
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 34px;
+  margin-top: 0;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #dcdcdc;
+  transition: 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+  background-color: var(--color-wine);
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.icon-sun,
+.icon-moon {
+  font-size: 14px;
+  z-index: 1;
+}
+
+input:checked + .slider .icon-sun {
+  opacity: 0.5;
+}
+input:not(:checked) + .slider .icon-moon {
+  opacity: 0.5;
+}
+
+body.dark-mode .btn-tema-icon {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .sidebar,
+body.dark-mode .time-box,
+body.dark-mode .evento-card,
+body.dark-mode .story-display,
+body.dark-mode .accordion-item,
+body.dark-mode .accordion-header,
+body.dark-mode .accordion-content,
+body.dark-mode .form-container,
+body.dark-mode .convidado-card,
+body.dark-mode .card-presente,
+body.dark-mode .login-modal-card,
+body.dark-mode .mural-card,
+body.dark-mode .btn-menu-flutuante,
+body.dark-mode .hero-content {
+  background-color: #1e1e1e;
+  border-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-dark);
+}
+body.dark-mode .layout-wrapper.menu-aberto .sidebar,
+body.dark-mode .sidebar {
+  border-right: none !important;
+  box-shadow: none !important;
+}
+
+body.dark-mode .presente-desc,
+body.dark-mode .evento-card .dica,
+body.dark-mode .story-display h3 {
+  color: #cccccc;
+}
+
+body.dark-mode .presente-valor,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode .sidebar-title {
+  color: var(--color-wine);
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="number"],
+body.dark-mode input[type="password"],
+body.dark-mode textarea,
+body.dark-mode .btn-copiar-pix {
+  background-color: #1a1514;
+  color: var(--text-dark);
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="number"]:focus,
+body.dark-mode input[type="password"]:focus,
+body.dark-mode textarea:focus {
+  background-color: #1a1514 !important;
+  color: var(--text-dark) !important;
+  border-color: var(--color-coral) !important;
+  box-shadow: 0 0 0 3px rgba(253, 93, 61, 0.15) !important;
+}
+
+body.dark-mode .btn-copiar-pix:hover,
+body.dark-mode .accordion-header:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+body.dark-mode .btn-copiar-pix.copiado {
+  background-color: #4caf50 !important;
+  color: white !important;
+  border-color: #4caf50 !important;
 }
 
 /* =========================================
