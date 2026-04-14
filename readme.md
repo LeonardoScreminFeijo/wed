@@ -12,7 +12,10 @@
 
 Bem-vindo ao repositório do nosso site de casamento! Este projeto está sendo construído com muito carinho para celebrar o nosso grande dia, que acontecerá em **24 de Abril de 2027**, na Chácara Doce Recanto (Curitiba - PR).
 
-O objetivo deste site é centralizar todas as informações para os nossos convidados, proporcionando uma experiência digital fluida, moderna e responsiva, com um design baseado na paleta "Tropical Chic" (Vinho, Coral, Laranja e Amarelo).
+O objetivo deste site é centralizar todas as informações para os nossos convidados, proporcionando uma experiência digital fluida, moderna e responsiva, com um design baseado na paleta "Tropical Chic" (Vinho, Coral, Laranja e Amarelo). 
+
+Link: https://wed-smoky.vercel.app/
+Para testes utilizar o login: teste / senha: teste123
 
 ---
 
