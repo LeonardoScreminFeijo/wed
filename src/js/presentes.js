@@ -3,6 +3,8 @@ import { isTestUser } from "./login.js";
 import { mostrarErro } from "./toast.js";
 import { Logger } from "./logger.js";
 
+// SEC-004: Chaves PIX são embutidas no bundle JS (prefixo VITE_ é público).
+// Em produção, use chave PIX do tipo aleatório (UUID) ou telefone — nunca CPF ou e-mail pessoal.
 const pixChaves = {
   passagem: import.meta.env.VITE_PIX_TESTE,
   branco: import.meta.env.VITE_PIX_TESTE,
