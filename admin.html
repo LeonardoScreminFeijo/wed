@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Admin | Ana & Leo</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./src/js/admin-guard.js"></script>
+  </head>
+  <body>
+    <script>
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+    </script>
+
+    <button id="btn-menu-global" class="btn-menu-flutuante" aria-label="Abrir Menu">
+      <span class="linha"></span>
+      <span class="linha"></span>
+      <span class="linha"></span>
+    </button>
+
+    <div class="layout-wrapper" id="app-layout">
+      <nav class="sidebar">
+        <a href="index.html" class="logo-link">
+          <h2 class="sidebar-title">A & L</h2>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="nossa-historia.html">Nossa História</a></li>
+          <li><a href="dicas.html">Dicas e Hospedagem</a></li>
+          <li class="item-restrito"><a href="rsvp.html">Confirmar Presença</a></li>
+          <li class="item-restrito"><a href="gifts.html">Lista de Presentes</a></li>
+          <li class="item-restrito"><a href="mural.html">Mural de Recados</a></li>
+          <li class="item-admin"><a href="admin.html" class="active">Painel Admin</a></li>
+        </ul>
+
+        <div class="sidebar-auth">
+          <span id="nome-usuario-logado"></span>
+          <a href="javascript:void(0)" id="link-login">🔐 Fazer Login</a>
+          <a href="javascript:void(0)" id="link-logout">Sair →</a>
+        </div>
+      </nav>
+
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="theme-toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider round">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+          </span>
+        </label>
+      </div>
+
+      <main class="main-content">
+        <section class="section-container">
+          <h1 class="section-title">Painel Admin</h1>
+          <p class="admin-subtitulo">Visão exclusiva dos noivos</p>
+
+          <!-- STATS -->
+          <div class="admin-section">
+            <h2 class="admin-section-title">Resumo de Presenças</h2>
+            <div id="admin-stats" class="admin-stats-grid"></div>
+          </div>
+
+          <!-- RSVP TABLE -->
+          <div class="admin-section">
+            <h2 class="admin-section-title">Lista de Confirmações</h2>
+            <div id="admin-rsvp-tabela"></div>
+          </div>
+
+          <!-- MURAL -->
+          <div class="admin-section">
+            <h2 class="admin-section-title">Mural de Recados</h2>
+            <div id="admin-mural-grid" class="mural-grid"></div>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <p>Feito com ❤️ para o nosso Grande Dia</p>
+          <p class="footer-names">Ana & Leo &copy; 2027</p>
+        </footer>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/admin.js"></script>
+  </body>
+</html>
