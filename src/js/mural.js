@@ -61,16 +61,30 @@ export function iniciarMural() {
       const card = document.createElement("div");
       card.className = "mural-card";
 
-      card.innerHTML = `
-        <p class="mural-texto">"${recado.texto}"</p>
-        <p class="mural-autor">— ${recado.autor}</p>
-        <button class="btn-apagar-mensagem" data-id="${recado.id}" title="Excluir recado para TODOS">🗑️</button>
-      `;
+      const pTexto = document.createElement("p");
+      pTexto.className = "mural-texto";
+      pTexto.textContent = `"${recado.texto}"`;
+
+      const pAutor = document.createElement("p");
+      pAutor.className = "mural-autor";
+      pAutor.textContent = `— ${recado.autor}`;
+
+      card.appendChild(pTexto);
+      card.appendChild(pAutor);
+
+      if (isNoivos()) {
+        const btnApagar = document.createElement("button");
+        btnApagar.className = "btn-apagar-mensagem";
+        btnApagar.dataset.id = recado.id;
+        btnApagar.title = "Excluir recado para TODOS";
+        btnApagar.textContent = "🗑️";
+        card.appendChild(btnApagar);
+      }
 
       muralGrid.appendChild(card);
     });
 
-    ativarBotoesExclusao();
+    if (isNoivos()) ativarBotoesExclusao();
   }
 
   // =========================================
