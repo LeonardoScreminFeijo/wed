@@ -23,13 +23,52 @@ Site de casamento de Ana Carolina e Leonardo. Casamento em 24/04/2027, Chácara 
 | `gifts.html`       | `/gifts`       | Restrito   |
 | `mural.html`       | `/mural`       | Restrito   |
 
+## Fluxo de Branches (Git)
+
+```
+master          ← produção estável, só recebe merge do dev
+└── dev         ← integração, base de todo desenvolvimento
+    ├── feat/nome-da-feature
+    ├── fix/nome-do-bug
+    └── chore/nome-da-tarefa
+```
+
+### Regras
+
+- **Nunca commitar direto no `master`** — ele só recebe merge do `dev` quando estiver estável
+- **Todo trabalho nasce do `dev`** — criar sub-branch a partir dele antes de começar qualquer mudança
+- **Nomenclatura das sub-branches:**
+  - `feat/` — nova funcionalidade (ex: `feat/painel-admin`)
+  - `fix/` — correção de bug (ex: `fix/xss-mural`)
+  - `chore/` — ajustes sem impacto funcional (ex: `chore/atualizar-gitignore`)
+- Ao terminar, fazer merge da sub-branch de volta no `dev`
+- Quando `dev` estiver pronto para ir a ar, merge no `master` + push
+
+### Comandos do fluxo
+
+```bash
+# Iniciar uma nova tarefa
+git checkout dev
+git checkout -b feat/minha-feature
+
+# Finalizar e integrar ao dev
+git checkout dev
+git merge feat/minha-feature
+git push origin dev
+
+# Subir para produção
+git checkout master
+git merge dev
+git push origin master
+```
+
 ## Autenticação
 
 - Login via `POST` para `VITE_API_URL_LOGIN` (backend externo)
 - Sessão armazenada em `sessionStorage` como `wedding_auth_user` (string com o nome do usuário)
 - Roles: `ana` ou `leo` = admin (noivos), `teste` = modo teste, demais = convidado
 - Proteção de páginas restritas: `auth-guard.js` (script inline no `<head>` para redirect imediato) + `protegerPagina()` no JS
-- Brute force: 3 tentativas → bloqueio de 1 minuto (armazenado em `localStorage`)
+- Brute force: 3 tentativas → bloqueio de 5 minutos (armazenado em `localStorage`)
 - Inatividade: logout automático após 5 minutos sem interação
 
 ## Variáveis de Ambiente
