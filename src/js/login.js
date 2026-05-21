@@ -176,7 +176,7 @@ export function criarModal() {
           fecharModal();
           document.getElementById("form-login").reset();
         } else {
-          Logger.warn("LOGIN_FALHA_SENHA_INCORRETA", { tentativa: loginVal });
+          Logger.warn("LOGIN_FALHA_SENHA_INCORRETA", {});
           let tentativas = parseInt(
             localStorage.getItem("wedding_login_attempts") || "0",
           );
