@@ -15,6 +15,7 @@ export default defineConfig({
         nossaHistoria: resolve(__dirname, "nossa-historia.html"),
         rsvp: resolve(__dirname, "rsvp.html"),
         admin: resolve(__dirname, "admin.html"),
+        fotos: resolve(__dirname, "fotos.html"),
       },
     },
   },
