@@ -202,7 +202,9 @@ function renderizarMural(recados, grid) {
 }
 
 function texto(v) {
-  return String(v ?? "—");
+  const el = document.createElement("span");
+  el.textContent = String(v ?? "—");
+  return el.innerHTML;
 }
 
 iniciarAdmin();

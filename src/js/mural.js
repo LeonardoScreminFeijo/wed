@@ -151,7 +151,7 @@ export function iniciarMural() {
 
     // Criamos o objeto que vai para a nuvem
     const novoRecado = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       autor: inputAssinatura.value.trim(),
       texto: inputMensagem.value.trim(),
       usuario: obterUsuario(),

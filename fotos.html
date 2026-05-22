@@ -18,11 +18,7 @@
     <script src="./src/js/auth-guard.js"></script>
   </head>
   <body>
-    <script>
-      if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
-      }
-    </script>
+    <script src="/src/js/theme-init.js"></script>
 
     <button id="btn-menu-global" class="btn-menu-flutuante" aria-label="Abrir Menu">
       <span class="linha"></span>
@@ -102,10 +98,6 @@
     </div>
 
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/js/gallery.js"></script>
-    <script type="module">
-      import { iniciarGaleria } from "/src/js/gallery.js";
-      iniciarGaleria();
-    </script>
+    <script type="module" src="/src/js/fotos-init.js"></script>
   </body>
 </html>
