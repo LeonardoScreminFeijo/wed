@@ -1737,6 +1737,9 @@ body.dark-mode .btn-copiar-pix.copiado {
   background: rgba(136, 10, 31, 0.03);
 }
 
+.admin-table td.presenca-sim { color: #2e7d32; font-weight: 600; }
+.admin-table td.presenca-nao { color: #c62828; font-weight: 600; }
+
 .admin-aviso {
   color: var(--color-coral);
   font-style: italic;

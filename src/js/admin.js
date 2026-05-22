@@ -39,10 +39,10 @@ async function carregarRsvps() {
 function renderizarStats(lista, el) {
   let totalAdultosSim = 0, totalAdultosNao = 0, totalCriancasSim = 0;
 
-  lista.forEach(({ adultos_sim = 0, adultos_nao = 0, criancas_sim = 0 }) => {
-    totalAdultosSim  += Number(adultos_sim);
-    totalAdultosNao  += Number(adultos_nao);
-    totalCriancasSim += Number(criancas_sim);
+  lista.forEach(({ adulto, crianca, presenca }) => {
+    if (adulto  && presenca === "Sim") totalAdultosSim++;
+    if (adulto  && presenca === "Não") totalAdultosNao++;
+    if (crianca && presenca === "Sim") totalCriancasSim++;
   });
 
   el.innerHTML = `
@@ -71,14 +71,12 @@ function renderizarTabela(lista, el) {
     return;
   }
 
-  const linhas = lista.map(({ usuario, timestamp, adultos_sim, adultos_nao, criancas_sim, nomes, mensagem }) => `
+  const linhas = lista.map(({ timestamp, nome, adulto, crianca, presenca, mensagem }) => `
     <tr>
-      <td>${texto(usuario)}</td>
-      <td>${texto(timestamp)}</td>
-      <td>${Number(adultos_sim) || 0}</td>
-      <td>${Number(adultos_nao) || 0}</td>
-      <td>${Number(criancas_sim) || 0}</td>
-      <td>${texto(nomes)}</td>
+      <td>${texto(nome)}</td>
+      <td>${adulto ? "Adulto" : "Criança"}</td>
+      <td class="${presenca === "Sim" ? "presenca-sim" : "presenca-nao"}">${texto(presenca)}</td>
+      <td>${texto(formatarData(timestamp))}</td>
       <td class="td-mensagem">${texto(mensagem)}</td>
     </tr>
   `).join("");
@@ -91,12 +89,10 @@ function renderizarTabela(lista, el) {
       <table class="admin-table" id="tabela-rsvp">
         <thead>
           <tr>
-            <th>Login</th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Presença</th>
             <th>Data</th>
-            <th>Adultos Sim</th>
-            <th>Adultos Não</th>
-            <th>Crianças</th>
-            <th>Nomes</th>
             <th>Mensagem</th>
           </tr>
         </thead>
@@ -109,9 +105,9 @@ function renderizarTabela(lista, el) {
 }
 
 function exportarCSV(lista) {
-  const cabecalho = ["Login", "Data", "Adultos Sim", "Adultos Não", "Crianças", "Nomes", "Mensagem"];
-  const linhas = lista.map(({ usuario, timestamp, adultos_sim, adultos_nao, criancas_sim, nomes, mensagem }) =>
-    [usuario, timestamp, adultos_sim, adultos_nao, criancas_sim, nomes, mensagem]
+  const cabecalho = ["Nome", "Tipo", "Presença", "Data", "Mensagem"];
+  const linhas = lista.map(({ timestamp, nome, adulto, presenca, mensagem }) =>
+    [nome, adulto ? "Adulto" : "Criança", presenca, formatarData(timestamp), mensagem]
       .map(v => `"${String(v ?? "").replace(/"/g, '""')}"`)
       .join(",")
   );
@@ -125,6 +121,13 @@ function exportarCSV(lista) {
   a.click();
   URL.revokeObjectURL(url);
   mostrarSucesso("CSV exportado com sucesso!");
+}
+
+function formatarData(ts) {
+  if (!ts) return "—";
+  const d = new Date(ts);
+  if (isNaN(d)) return String(ts);
+  return d.toLocaleDateString("pt-BR") + " " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 }
 
 // ==========================================
