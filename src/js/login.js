@@ -138,6 +138,7 @@ export function criarModal() {
         const card = document.querySelector(".login-modal-card");
         card.classList.add("shake");
         setTimeout(() => card.classList.remove("shake"), 600);
+        return;
       } else if (bloqueioAte) {
         localStorage.removeItem("wedding_login_lock");
         localStorage.removeItem("wedding_login_attempts");
@@ -175,7 +176,7 @@ export function criarModal() {
           fecharModal();
           document.getElementById("form-login").reset();
         } else {
-          Logger.warn("LOGIN_FALHA_SENHA_INCORRETA", { tentativa: loginVal });
+          Logger.warn("LOGIN_FALHA_SENHA_INCORRETA", {});
           let tentativas = parseInt(
             localStorage.getItem("wedding_login_attempts") || "0",
           );
@@ -183,7 +184,7 @@ export function criarModal() {
           localStorage.setItem("wedding_login_attempts", tentativas);
 
           if (tentativas >= 3) {
-            const tempoBloqueio = Date.now() + 1 * 60 * 1000;
+            const tempoBloqueio = Date.now() + 5 * 60 * 1000;
             localStorage.setItem("wedding_login_lock", tempoBloqueio);
             erro.textContent =
               "Muitas tentativas falhas. Tente novamente em 5 minutos.";

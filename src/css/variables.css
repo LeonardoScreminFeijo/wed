@@ -1,23 +1,41 @@
 :root {
-  /* 
-       Paleta de Cores
-       */
+  /*
+   * PÉTALA DOURADA — Redesign visual do site Ana & Leo
+   * Paleta oficial do casamento aplicada com hierarquia refinada:
+   *   dourado (#fdc566) = tom dominante / alma do site
+   *   laranja (#fd921e) = labels, elementos secundários
+   *   coral   (#fd5d3d) = CTAs, links ativos
+   *   vinho   (#880a1f) = âncora tipográfica, usado com parcimônia
+   */
 
-  /* Cores da referencia */
-  /*--color-wine: #880a1f ou e40f0f ou dd1717ce;*/
-  --color-wine: #880a1f; /* Vermelho escuro/Vinho */
-  --color-pink: #e82c50; /* Rosa vibrante */
-  --color-coral: #fd5d3d; /* Laranja avermelhado */
-  --color-orange: #fd921e; /* Laranja quente */
-  --color-yellow: #fdc566; /* Amarelo/Pêssego claro */
+  /* ── Paleta ── */
+  --color-wine:   #880a1f;  /* Vinho — âncora, usar apenas em headings e sidebar logo */
+  --color-coral:  #fd5d3d;  /* Coral — CTAs, botões, links interativos */
+  --color-orange: #fd921e;  /* Laranja — labels de seção, hora do evento */
+  --color-yellow: #fdc566;  /* Dourado — dividers, bordas, tom dominante */
 
-  /* Tons Neutros para o Fundo e Textos*/
-  --bg-light: #fffcf9; /* off-white claro e quente para fundo */
-  --text-dark: #3a2e2c; /* Marrom bem escuro para textos (mais suave que preto) */
+  /* ── Neutros ── */
+  --bg-light:    #fffdf8;   /* Off-white muito quente — fundo geral */
+  --text-dark:   #2e1f1c;   /* Marrom escuro quente — texto principal */
+  --text-muted:  #907470;   /* Tom médio quente — textos secundários */
+  --bg-card:     #ffffff;   /* Fundo de cards e sidebar */
+  --border-soft: #f0e8d8;   /* Borda suave marfim */
+  --gold-pale:   #fef4dc;   /* Dourado muito claro — fundos de seção tokens */
 
-  /* ==========================================
-       Tipografia
-       ========================================== */
-  --font-titles: "Playfair Display", serif;
-  --font-text: "Lato", sans-serif;
+  /* ── Tipografia ── */
+  --font-titles: 'Cormorant Garamond', serif;  /* Elegante, itálico, 300 weight */
+  --font-text:   'Jost', sans-serif;           /* Clean, geométrica, leve */
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+.dark-mode {
+  --bg-light:    #121212;
+  --text-dark:   #fdfbf7;
+  --color-wine:  #ad0d28;
+  --bg-card:     #1e1e1e;
+  --border-soft: rgba(255, 255, 255, 0.07);
+  --text-muted:  #a09090;
+  --gold-pale:   #1a1410;
 }

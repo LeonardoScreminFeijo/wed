@@ -1,3 +1,6 @@
+// LGPD: nunca logar senhas, CPF, e-mail ou dados pessoais nos detalhes.
+// O campo "usuario" é o login (identificador interno), não nome completo.
+// O endpoint de logs deve ter política de retenção máxima de 90 dias.
 const LOG_URL = import.meta.env.VITE_API_URL_LOGS;
 
 function enviarParaNuvem(nivel, acao, detalhes) {

@@ -25,3 +25,7 @@ dist-ssr
 
 # Arquivos de ambiente
 .env
+roadmap-seguranca.md
+sugestoes-features.md
+.claude
+.vercel

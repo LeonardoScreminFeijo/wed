@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mural de Recados | Ana & Leo</title>
+    <title>Galeria de Fotos | Ana & Leo</title>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="./src/css/style.css" />
     <link rel="stylesheet" href="./src/css/overrides-petala.css" />
     <link
@@ -18,11 +20,8 @@
   </head>
   <body>
     <script src="/src/js/theme-init.js"></script>
-    <button
-      id="btn-menu-global"
-      class="btn-menu-flutuante"
-      aria-label="Abrir Menu"
-    >
+
+    <button id="btn-menu-global" class="btn-menu-flutuante" aria-label="Abrir Menu">
       <span class="linha"></span>
       <span class="linha"></span>
       <span class="linha"></span>
@@ -47,10 +46,10 @@
             <a href="gifts.html">Lista de Presentes</a>
           </li>
           <li class="item-restrito">
-            <a href="mural.html" class="active">Mural de Recados</a>
+            <a href="mural.html">Mural de Recados</a>
           </li>
           <li class="item-restrito">
-            <a href="fotos.html">Galeria de Fotos</a>
+            <a href="fotos.html" class="active">Galeria de Fotos</a>
           </li>
           <li class="item-admin">
             <a href="admin.html">Painel Admin</a>
@@ -76,64 +75,33 @@
 
       <main class="main-content">
         <section class="section-container">
-          <h1 class="section-title">Mural de Recados</h1>
-          <p class="section-subtitle">Deixe uma mensagem para os noivos</p>
-          <p style="margin-bottom: 40px; font-size: 1.1rem">
-            Deixe um conselho, uma memória ou seus votos de felicidade para nós!
-          </p>
+          <h1 class="section-title">Galeria de Fotos</h1>
+          <p class="section-subtitle">Memórias do nosso grande dia</p>
+          <p class="galeria-subtitulo">Memórias do nosso grande dia 🎉</p>
 
-          <div class="form-container">
-            <form id="form-mural">
-              <div class="input-group">
-                <label for="assinatura-mural">Assinado por *</label>
-                <input
-                  type="text"
-                  id="assinatura-mural"
-                  name="assinatura"
-                  required
-                  placeholder="Seu nome, apelido ou família..."
-                  maxlength="50"
-                />
-              </div>
-
-              <div class="input-group">
-                <label for="mensagem-mural">Seu Recado *</label>
-                <textarea
-                  id="mensagem-mural"
-                  name="mensagem"
-                  rows="4"
-                  maxlength="300"
-                  required
-                  placeholder="Escreva sua mensagem aqui (máx. 300 caracteres)..."
-                ></textarea>
-              </div>
-              <button type="submit" class="btn-submit">Enviar Recado</button>
-            </form>
-          </div>
-
-          <div id="mural-grid" class="mural-grid"></div>
+          <div id="galeria-grid" class="galeria-grid"></div>
         </section>
-
-        <audio id="audio-casamento" loop>
-          <source src="public/audio/ipanema.m4a" type="audio/mp4" />
-          O seu navegador não suporta o elemento de áudio.
-        </audio>
-
-        <button
-          id="btn-musica"
-          class="btn-musica-flutuante"
-          aria-label="Tocar música de fundo"
-        >
-          <span class="icone-musica">🔇</span>
-        </button>
 
         <footer class="site-footer">
           <p>Feito com ❤️ para o nosso Grande Dia</p>
-          <p class="footer-names">Ana & Leo © 2027</p>
-          <p class="footer-hashtag">#CasamentoAnaELeo</p>
+          <p class="footer-names">Ana & Leo &copy; 2027</p>
         </footer>
       </main>
     </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+      <button id="lightbox-fechar" class="lightbox-fechar" aria-label="Fechar">&times;</button>
+      <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Anterior">&#8592;</button>
+      <div class="lightbox-conteudo">
+        <img id="lightbox-img" src="" alt="Foto em destaque" class="lightbox-imagem" />
+        <p id="lightbox-legenda" class="lightbox-legenda"></p>
+        <span id="lightbox-contador" class="lightbox-contador"></span>
+      </div>
+      <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Próxima">&#8594;</button>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/fotos-init.js"></script>
   </body>
 </html>

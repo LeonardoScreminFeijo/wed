@@ -9,12 +9,14 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>"
     />
     <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/overrides-petala.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lato:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <script src="/src/js/theme-init.js"></script>
     <button
       id="btn-menu-global"
       class="btn-menu-flutuante"
@@ -30,6 +32,8 @@
         <a href="index.html" class="logo-link">
           <h2 class="sidebar-title">A & L</h2>
         </a>
+        <p class="sidebar-date">24 de Abril de 2027</p>
+        <div class="sidebar-divider"></div>
 
         <ul class="nav-links">
           <li><a href="index.html" class="active">Início</a></li>
@@ -44,6 +48,12 @@
           <li class="item-restrito">
             <a href="mural.html">Mural de Recados</a>
           </li>
+          <li class="item-restrito">
+            <a href="fotos.html">Galeria de Fotos</a>
+          </li>
+          <li class="item-admin">
+            <a href="admin.html">Painel Admin</a>
+          </li>
         </ul>
 
         <div class="sidebar-auth">
@@ -53,18 +63,32 @@
         </div>
       </nav>
 
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="theme-toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider round">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+          </span>
+        </label>
+      </div>
+
       <main class="main-content">
         <section class="hero-section">
           <div class="hero-content">
-            <p class="pre-title">Save the Date</p>
-            <h1>Ana Carolina e Leonardo</h1>
-            <p>Chácara Doce Recanto • Curitiba, PR</p>
+            <p class="pre-title">Save the Date · Curitiba, PR</p>
+            <h1>Ana Carolina<br>e Leonardo</h1>
+            <div class="hero-rule"></div>
+            <p class="hero-location">
+              Chácara Doce Recanto · Sábado, 24 de Abril de 2027 · 16h
+            </p>
             <div id="countdown" class="countdown-container"></div>
           </div>
         </section>
 
         <section id="o-evento" class="section-container">
           <h2 class="section-title">O Grande Dia</h2>
+          <p class="section-subtitle">Informações do evento</p>
 
           <div class="evento-grid">
             <div class="evento-card" data-aos="fade-up">
