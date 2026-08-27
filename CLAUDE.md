@@ -81,6 +81,8 @@ VITE_API_URL_RSVP    → Google Sheets / endpoint de confirmação de presença
 VITE_API_URL_MURAL   → CRUD de recados (GET/POST/DELETE)
 VITE_API_URL_LOGS    → Endpoint de logging em nuvem
 VITE_PIX_TESTE       → Chave PIX de teste (produção usa chaves por item)
+VITE_MP_PUBLIC_KEY   → Public Key do Mercado Pago (Payment Bricks, cliente)
+MP_ACCESS_TOKEN      → Access Token do Mercado Pago (secret, só backend — NUNCA prefixo VITE_)
 ```
 
 > Variáveis com prefixo `VITE_` são expostas no bundle cliente — não colocar secrets aqui.
@@ -94,6 +96,7 @@ VITE_PIX_TESTE       → Chave PIX de teste (produção usa chaves por item)
 | `rsvp.js`       | Formulário dinâmico de confirmação de presença        |
 | `mural.js`      | Mural de recados (carrega, posta, deleta da nuvem)    |
 | `presentes.js`  | Cópia de chaves PIX por item                         |
+| `mercadopago.js`| Modal com Payment Brick (Pix/Cartão) na Lista de Presentes |
 | `logger.js`     | Logger client-side com envio para API de logs         |
 | `countdown.js`  | Contagem regressiva até o casamento                   |
 | `confetti.js`   | Confetes (canvas-confetti)                            |
@@ -103,9 +106,17 @@ VITE_PIX_TESTE       → Chave PIX de teste (produção usa chaves por item)
 | `accordion.js`  | Sanfona de FAQ/Dicas                                  |
 | `music.js`      | Player de música de fundo flutuante                   |
 
+## Backend Serverless (`api/`)
+
+- **Vercel Functions**, não AWS — mesma origin do site, sem CORS.
+- `mp-criar-pagamento.js`: recebe submit do Payment Brick, valida item/valor contra whitelist server-side (`api/_lib/itens-presentes.js`, nunca confia no valor do client), cria o pagamento via SDK `mercadopago` com `MP_ACCESS_TOKEN`.
+- `mp-webhook.js`: recebe notificação do Mercado Pago, sempre reconsulta o pagamento pela API antes de considerar confirmado (nunca confia no payload da notificação).
+- `_lib/itens-presentes.js`: fonte da verdade dos valores dos presentes — manter em sincronia manual com os cards de `gifts.html`.
+- `_lib/server-logger.js`: equivalente server-side de `logger.js` (aquele é browser-only).
+
 ## Modo Teste
 
-Usuário `teste` desvia todas as chamadas reais às APIs (RSVP, mural, PIX). Útil para demonstração sem poluir dados. Verificar sempre com `isTestUser()` antes de chamadas reais.
+Usuário `teste` desvia todas as chamadas reais às APIs (RSVP, mural, PIX, Mercado Pago). Útil para demonstração sem poluir dados. Verificar sempre com `isTestUser()` antes de chamadas reais.
 
 ## Comandos
 

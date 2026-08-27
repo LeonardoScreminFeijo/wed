@@ -1151,6 +1151,23 @@ body.dark-mode .btn-copiar-pix.copiado {
   border-color: #4caf50;
 }
 
+.btn-pagar-mp {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 8px;
+  background-color: var(--color-coral);
+  color: #fff;
+  border: 1px solid var(--color-coral);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-pagar-mp:hover {
+  opacity: 0.9;
+}
+
 /* ==========================================
    Modal de Login
    ========================================== */
@@ -1246,6 +1263,26 @@ body.dark-mode .btn-copiar-pix.copiado {
 .login-modal-fechar:hover {
   background: rgba(253, 93, 61, 0.1);
   color: var(--color-coral);
+}
+
+/* Modal de Pagamento (Mercado Pago Brick) — mais largo que o de login pro form de cartão */
+.mp-modal-card {
+  max-width: 480px;
+}
+
+.mp-resultado {
+  text-align: center;
+}
+
+.mp-resultado img {
+  max-width: 220px;
+  display: block;
+  margin: 12px auto;
+}
+
+/* Remove o subtítulo "Preencha seus dados" do formulário de cartão do Brick */
+#paymentBrick_container h2 {
+  display: none;
 }
 
 /* Cabeçalho do modal */
