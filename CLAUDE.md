@@ -113,7 +113,7 @@ MP_ACCESS_TOKEN      → Access Token do Mercado Pago (secret, só backend — N
 ## Backend Serverless (`api/`)
 
 - **Vercel Functions**, não AWS — mesma origin do site, sem CORS.
-- `mp-criar-pagamento.js`: recebe submit do Payment Brick, valida item/valor contra whitelist server-side (`api/_lib/itens-presentes.js`, nunca confia no valor do client), cria o pagamento via SDK `mercadopago` com `MP_ACCESS_TOKEN`.
+- `mp-criar-pagamento.js`: recebe submit do Payment Brick, valida item/valor contra whitelist server-side (`api/_lib/itens-presentes.js`, nunca confia no valor do client), cria o pagamento via SDK `mercadopago` com `MP_ACCESS_TOKEN`. Exceção: item com `livre: true` (ex: `pix_livre`) aceita valor do client, mas valida `>= minimo` no servidor antes de criar o pagamento.
 - `mp-webhook.js`: recebe notificação do Mercado Pago, sempre reconsulta o pagamento pela API antes de considerar confirmado (nunca confia no payload da notificação).
 - `_lib/itens-presentes.js`: fonte da verdade dos valores dos presentes — manter em sincronia manual com os cards de `gifts.html`.
 - `_lib/server-logger.js`: equivalente server-side de `logger.js` (aquele é browser-only).

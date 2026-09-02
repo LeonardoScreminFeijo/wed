@@ -1,6 +1,8 @@
 // Fonte da verdade dos valores — nunca confiar no valor vindo do client.
 // Mantido em sincronia manual com os cards de gifts.html.
+// Exceção: itens com `livre: true` aceitam valor do client, desde que >= `minimo` (ver api/mp-criar-pagamento.js).
 export const ITENS_PRESENTES = {
+  pix_livre: { titulo: "Pix Livre", livre: true, minimo: 100.0 },
   passagem: { titulo: "Passagens Aéreas", valor: 750.0 },
   drinks: { titulo: "Drinks", valor: 150.0 },
   vinhos: { titulo: "Vinhos", valor: 200.0 },
