@@ -74,7 +74,7 @@ export function criarModal() {
       <div class="login-modal-header">
         <p class="login-modal-initials">A & L</p>
         <h2>Área Restrita</h2>
-        <p class="login-modal-subtitulo">Acesso exclusivo para convidados</p>
+        <p class="login-modal-subtitulo">Acesso exclusivo para os noivos</p>
       </div>
       <form id="form-login" novalidate>
         <div class="login-input-group">
@@ -226,16 +226,6 @@ export function iniciarLogin() {
   const linkLogin = document.getElementById("link-login");
   const linkLogout = document.getElementById("link-logout");
 
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get("login") === "necessario") {
-    abrirModal();
-    window.history.replaceState({}, document.title, window.location.pathname);
-    setTimeout(() => {
-      document.getElementById("login-erro").textContent =
-        "Por favor, faça login para acessar esta página.";
-    }, 400);
-  }
-
   if (linkLogin) {
     linkLogin.addEventListener("click", (e) => {
       e.preventDefault();
@@ -293,12 +283,4 @@ function efetuarLogout() {
   } else {
     window.location.reload();
   }
-}
-
-export function protegerPagina() {
-  if (!sessionStorage.getItem(CHAVE)) {
-    window.location.href = "index.html?login=necessario";
-    return false;
-  }
-  return true;
 }

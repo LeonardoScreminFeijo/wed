@@ -194,6 +194,10 @@ body.dark-mode .story-display h3 {
   color: #cccccc;
 }
 
+body.dark-mode .presente-icone {
+  background: #2a2a2a;
+}
+
 body.dark-mode .presente-valor,
 body.dark-mode h1,
 body.dark-mode h2,
@@ -1078,11 +1082,23 @@ body.dark-mode .btn-copiar-pix.copiado {
   margin: 0 auto 3rem auto;
 }
 
+.presentes-categoria-titulo {
+  font-size: 1.6rem;
+  margin: 2.5rem 0 1rem;
+  text-align: center;
+}
+
+.presentes-categoria-titulo:first-of-type {
+  margin-top: 1rem;
+}
+
 .grid-presentes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
+  justify-content: center;
   gap: 2rem;
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .card-presente {
@@ -1105,20 +1121,32 @@ body.dark-mode .btn-copiar-pix.copiado {
 .presente-icone {
   margin-bottom: 1rem;
   width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  background: #f4f4f4;
+  overflow: hidden;
 }
 
 .presente-icone img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
+  height: 100%;
+  object-fit: contain;
   display: block;
+}
+
+.presente-icone-cover {
+  background: none;
+}
+
+.presente-icone-cover img {
+  object-fit: cover;
 }
 
 .presente-desc {
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
 .presente-valor {
@@ -1513,12 +1541,6 @@ body.dark-mode .btn-copiar-pix.copiado {
 /* =========================================
    DESLOGADO
    ========================================= */
-.user-logged-in .item-restrito,
-.item-restrito {
-  display: none;
-}
-
-.item-restrito,
 #link-logout,
 #nome-usuario-logado {
   display: none;
@@ -1531,7 +1553,6 @@ body.dark-mode .btn-copiar-pix.copiado {
 /* =========================================
    LOGADO
    ========================================= */
-.user-logged-in .item-restrito,
 .user-logged-in #link-logout,
 .user-logged-in #nome-usuario-logado {
   display: block;

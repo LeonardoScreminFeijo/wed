@@ -19,9 +19,11 @@ Site de casamento de Ana Carolina e Leonardo. Casamento em 24/04/2027, Chácara 
 | `index.html`       | `/`            | Público    |
 | `nossa-historia.html` | `/nossa-historia` | Público |
 | `dicas.html`       | `/dicas`       | Público    |
-| `rsvp.html`        | `/rsvp`        | Restrito   |
-| `gifts.html`       | `/gifts`       | Restrito   |
-| `mural.html`       | `/mural`       | Restrito   |
+| `rsvp.html`        | `/rsvp`        | Público    |
+| `gifts.html`       | `/gifts`       | Público    |
+| `mural.html`       | `/mural`       | Público (exclusão de recado exige login noivos) |
+| `fotos.html`       | `/fotos`       | Público    |
+| `admin.html`       | `/admin`       | Restrito (só `ana`/`leo`) |
 
 ## Fluxo de Branches (Git)
 
@@ -64,10 +66,12 @@ git push origin master
 
 ## Autenticação
 
+- Login não é mais exigido para convidados — `rsvp.html`, `gifts.html`, `mural.html` e `fotos.html` são públicos. Login existe só para os noivos acessarem o dashboard e apagar recados
 - Login via `POST` para `VITE_API_URL_LOGIN` (backend externo)
 - Sessão armazenada em `sessionStorage` como `wedding_auth_user` (string com o nome do usuário)
-- Roles: `ana` ou `leo` = admin (noivos), `teste` = modo teste, demais = convidado
-- Proteção de páginas restritas: `auth-guard.js` (script inline no `<head>` para redirect imediato) + `protegerPagina()` no JS
+- Roles: `ana` ou `leo` = admin (noivos), `teste` = modo teste (usado internamente pelos noivos para demonstração, sem gate de página)
+- Proteção da página restrita: `admin-guard.js` (script inline no `<head>` de `admin.html`, redireciona quem não for `ana`/`leo`)
+- Botão de excluir recado no `mural.html` só aparece para `isNoivos()`; a API sempre revalida o usuário no DELETE
 - Brute force: 3 tentativas → bloqueio de 5 minutos (armazenado em `localStorage`)
 - Inatividade: logout automático após 5 minutos sem interação
 
@@ -91,8 +95,8 @@ MP_ACCESS_TOKEN      → Access Token do Mercado Pago (secret, só backend — N
 
 | Arquivo         | Responsabilidade                                      |
 |-----------------|-------------------------------------------------------|
-| `login.js`      | Modal de login, sessão, roles, timer de inatividade   |
-| `auth-guard.js` | Redirect antecipado (sem módulo) para páginas restritas |
+| `login.js`      | Modal de login (só noivos), sessão, roles, timer de inatividade |
+| `admin-guard.js`| Redirect antecipado (sem módulo) para `admin.html` se não for `ana`/`leo` |
 | `rsvp.js`       | Formulário dinâmico de confirmação de presença        |
 | `mural.js`      | Mural de recados (carrega, posta, deleta da nuvem)    |
 | `presentes.js`  | Cópia de chaves PIX por item                         |

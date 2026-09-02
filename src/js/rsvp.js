@@ -1,12 +1,11 @@
 import { dispararConfetes } from "./confetti.js";
 import { mostrarSucesso, mostrarErro } from "./toast.js";
-import { protegerPagina, isTestUser, obterUsuario } from "./login.js";
+import { isTestUser, obterUsuario } from "./login.js";
 import { Logger } from "./logger.js";
 
 export function iniciarRSVP() {
   const form = document.getElementById("form-rsvp");
   if (!form) return;
-  if (!protegerPagina()) return;
 
   const inputAdultos = document.getElementById("adultos");
   const inputCriancas = document.getElementById("criancas");
