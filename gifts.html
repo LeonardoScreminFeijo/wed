@@ -4,22 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dicas e Hospedagem | Ana & Leo</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>" />
     <link rel="stylesheet" href="./src/css/style.css" />
     <link rel="stylesheet" href="./src/css/overrides-petala.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <script src="./src/js/auth-guard.js"></script>
+      rel="stylesheet" />
   </head>
   <body>
     <script src="/src/js/theme-init.js"></script>
     <button
       id="btn-menu-global"
       class="btn-menu-flutuante"
-      aria-label="Abrir Menu"
-    >
+      aria-label="Abrir Menu">
       <span class="linha"></span>
       <span class="linha"></span>
       <span class="linha"></span>
@@ -37,18 +36,10 @@
           <li><a href="index.html">Início</a></li>
           <li><a href="nossa-historia.html">Nossa História</a></li>
           <li><a href="dicas.html">Dicas e Hospedagem</a></li>
-          <li class="item-restrito">
-            <a href="rsvp.html">Confirmar Presença</a>
-          </li>
-          <li class="item-restrito">
-            <a href="gifts.html" class="active">Lista de Presentes</a>
-          </li>
-          <li class="item-restrito">
-            <a href="mural.html">Mural de Recados</a>
-          </li>
-          <li class="item-restrito">
-            <a href="fotos.html">Galeria de Fotos</a>
-          </li>
+          <li><a href="rsvp.html">Confirmar Presença</a></li>
+          <li><a href="gifts.html" class="active">Lista de Presentes</a></li>
+          <li><a href="mural.html">Mural de Recados</a></li>
+          <li><a href="fotos.html">Galeria de Fotos</a></li>
           <li class="item-admin">
             <a href="admin.html">Painel Admin</a>
           </li>
@@ -56,7 +47,7 @@
 
         <div class="sidebar-auth">
           <span id="nome-usuario-logado"></span>
-          <a href="javascript:void(0)" id="link-login">🔐 Fazer Login</a>
+          <a href="javascript:void(0)" id="link-login">Fazer Login (Noivos)</a>
           <a href="javascript:void(0)" id="link-logout">Sair →</a>
         </div>
       </nav>
@@ -80,33 +71,13 @@
             para a nossa lua de mel, separamos algumas cotas abaixo.
           </p>
 
-          <div class="grid-presentes" id="grid-presentes">
+          <h2 class="presentes-categoria-titulo">Engraçados</h2>
+          <div class="grid-presentes">
             <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
               <div class="presente-icone">
                 <img
-                  src="./src/assets/img/gifts/airplane.jpg"
-                  alt="Ícone ilustrativo de passagem aérea"
-                />
-              </div>
-              <h3>Passagens Aéreas</h3>
-              <p class="presente-desc">Ajude a nos levar para o paraíso!</p>
-              <span class="presente-valor">R$ 500,00</span>
-              <button
-                class="btn-pagar-mp btn-comprar"
-                data-item="passagem"
-                data-valor="500.00"
-                data-titulo="Passagens Aéreas"
-              >
-                Comprar
-              </button>
-            </div>
-
-            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
-              <div class="presente-icone">
-                <img
                   src="./src/assets/img/gifts/branco.jpg"
-                  alt="Ícone ilustrativo de passagem aérea"
-                />
+                  alt="Ícone ilustrativo de passagem aérea" />
               </div>
               <h3>Cota para ir de branco no casamento</h3>
               <p class="presente-desc">Vai ser incoveniente...</p>
@@ -114,49 +85,8 @@
               <button
                 class="btn-pagar-mp btn-comprar"
                 data-item="branco"
-                data-valor="5000.00"
-                data-titulo="Cota para ir de branco no casamento"
-              >
-                Comprar
-              </button>
-            </div>
-
-            <div class="card-presente" data-aos="fade-up" data-aos-delay="300">
-              <div class="presente-icone">
-                <img
-                  src="./src/assets/img/gifts/suborno.jpg"
-                  alt="Ícone ilustrativo de passagem aérea"
-                />
-              </div>
-              <h3>Suborno para o DJ</h3>
-              <p class="presente-desc">Garante que o DJ vai tocar aquela música brega que você ama (ou o hino do seu time).</p>
-              <span class="presente-valor">R$ 150,00</span>
-              <button
-                class="btn-pagar-mp btn-comprar"
-                data-item="dj"
-                data-valor="150.00"
-                data-titulo="Suborno para o DJ"
-              >
-                Comprar
-              </button>
-            </div>
-
-            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
-              <div class="presente-icone">
-                <img
-                  src="./src/assets/img/gifts/pobre.jpg"
-                  alt="Ícone ilustrativo de pobreza"
-                />
-              </div>
-              <h3>Só pra não dizer que não dei nada</h3>
-              <p class="presente-desc">Ta duro dorme...</p>
-              <span class="presente-valor">R$ 10,00</span>
-              <button
-                class="btn-pagar-mp btn-comprar"
-                data-item="pobre"
-                data-valor="10.00"
-                data-titulo="Só pra não dizer que não dei nada"
-              >
+                data-valor="3000.00"
+                data-titulo="Cota para ir de branco no casamento">
                 Comprar
               </button>
             </div>
@@ -164,19 +94,20 @@
             <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
               <div class="presente-icone">
                 <img
-                  src="./src/assets/img/gifts/drunks.jpg"
-                  alt="Ícone ilustrativo de bebado"
-                />
+                  src="./src/assets/img/gifts/suborno.jpg"
+                  alt="Ícone ilustrativo de passagem aérea" />
               </div>
-              <h3>Seguro Anti-Vexame</h3>
-              <p class="presente-desc">Garante que os fotógrafos apaguem qualquer registro seu após a 3ª rodada de shots.</p>
-              <span class="presente-valor">R$ 400,00</span>
+              <h3>Suborno para o DJ</h3>
+              <p class="presente-desc">
+                Garante que o DJ vai tocar aquela música brega que você ama (ou
+                o hino do seu time).
+              </p>
+              <span class="presente-valor">R$ 200,00</span>
               <button
                 class="btn-pagar-mp btn-comprar"
-                data-item="bebado"
-                data-valor="400.00"
-                data-titulo="Seguro Anti-Vexame"
-              >
+                data-item="dj"
+                data-valor="200.00"
+                data-titulo="Suborno para o DJ">
                 Comprar
               </button>
             </div>
@@ -184,19 +115,348 @@
             <div class="card-presente" data-aos="fade-up" data-aos-delay="300">
               <div class="presente-icone">
                 <img
+                  src="./src/assets/img/gifts/drunks.jpg"
+                  alt="Ícone ilustrativo de bebado" />
+              </div>
+              <h3>Seguro Anti-Vexame</h3>
+              <p class="presente-desc">
+                Garante que os fotógrafos apaguem qualquer registro seu após a
+                3ª rodada de shots.
+              </p>
+              <span class="presente-valor">R$ 400,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="bebado"
+                data-valor="400.00"
+                data-titulo="Seguro Anti-Vexame">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
                   src="./src/assets/img/gifts/buque.jpg"
-                  alt="Ícone ilustrativo de buque"
-                />
+                  alt="Ícone ilustrativo de buque" />
               </div>
               <h3>Imunidade do Buquê</h3>
-              <p class="presente-desc">A noiva se compromete a mirar o buquê na direção oposta à da sua namorada</p>
+              <p class="presente-desc">
+                A noiva se compromete a mirar o buquê na direção oposta à da sua
+                namorada
+              </p>
               <span class="presente-valor">R$ 700,00</span>
               <button
                 class="btn-pagar-mp btn-comprar"
                 data-item="mira_buque"
                 data-valor="700.00"
-                data-titulo="Imunidade do Buquê"
-              >
+                data-titulo="Imunidade do Buquê">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/buque2.jpg"
+                  alt="Ícone ilustrativo de bagagem" />
+              </div>
+              <h3>Irmandade do buquê</h3>
+              <p class="presente-desc">
+                Garante que a noiva VAI MIRAR o buquê em sua direção
+              </p>
+              <span class="presente-valor">R$ 500,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="irmandade_buque"
+                data-valor="500.00"
+                data-titulo="Irmandade do buquê">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/dialogo.jpg"
+                  alt="Ícone ilustrativo de taco de baseball" />
+              </div>
+              <h3>Pra quando o noivo estressar a noiva</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 150,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="estresso_noivo"
+                data-valor="150.00"
+                data-titulo="Pra quando a noiva se estressar com o noivo">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/capacete.webp"
+                  alt="Ícone ilustrativo de capacete" />
+              </div>
+              <h3>Para quando a noiva usar o diálogo no noivo</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 200,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="capacete_noivo"
+                data-valor="200.00"
+                data-titulo="Para quando a noiva usar o diálogo no noivo">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/cartao.jpg"
+                  alt="Ícone ilustrativo de cartao" />
+              </div>
+              <h3>Ajuda pra pagar o cartão de crédito</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 450,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="cartao_noivo"
+                data-valor="450.00"
+                data-titulo="Ajuda pra pagar o cartão de crédito">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/deus.jpg"
+                  alt="Ícone ilustrativo de Deus" />
+              </div>
+              <h3>Se Deus tocar seu coração</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 5000,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="deus_coracao"
+                data-valor="5000.00"
+                data-titulo="Se Deus tocar seu coração">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/reverso.jpg"
+                  alt="Ícone ilustrativo de reverso" />
+              </div>
+              <h3>
+                Caso tenha comprado o "Imunidade do Buquê" e sua namorada o
+                "Imunidade do Buquê"
+              </h3>
+              <p class="presente-desc">
+                Garante o reverso e o buquê não é jogado novamente
+              </p>
+              <span class="presente-valor">R$ 800,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="reverso_buque"
+                data-valor="800.00"
+                data-titulo="Caso tenha comprado o 'Imunidade do Buquê' e sua namorada o 'Imunidade do Buquê'">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/lingerie.jpg"
+                  alt="Ícone ilustrativo de lingerie" />
+              </div>
+              <h3>Lingerie chique</h3>
+              <p class="presente-desc">Para a lua de mel da noiva</p>
+              <span class="presente-valor">R$ 150,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="lingerie_noiva"
+                data-valor="150.00"
+                data-titulo="Lingerie chique">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/cueca.jpg"
+                  alt="Ícone ilustrativo de cueca" />
+              </div>
+              <h3>Cueca chique</h3>
+              <p class="presente-desc">Para a lua de mel do noivo</p>
+              <span class="presente-valor">R$ 200,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="cueca_noivo"
+                data-valor="200.00"
+                data-titulo="Cueca chique">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/despedida_solteira.jpg"
+                  alt="Ícone ilustrativo de freiras" />
+              </div>
+              <h3>Despedida de solteira da noiva</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 900,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="despedida_noiva"
+                data-valor="900.00"
+                data-titulo="Despedida de solteira da noiva">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/despedida_solteiro.jpg"
+                  alt="Ícone ilustrativo de se beber não case" />
+              </div>
+              <h3>Despedida de solteiro do noivo</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 950,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="despedida_noivo"
+                data-valor="950.00"
+                data-titulo="Despedida de solteira do noivo">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/buffet.jpg"
+                  alt="Ícone ilustrativo de buffet" />
+              </div>
+              <h3>Primeiro lugar na fila do buffet</h3>
+              <p class="presente-desc">Depois da mesa dos noivos...</p>
+              <span class="presente-valor">R$ 350,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="buffet"
+                data-valor="350.00"
+                data-titulo="Primeiro lugar na fila do buffet">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/pizza.jpg"
+                  alt="Ícone ilustrativo de pizza" />
+              </div>
+              <h3>Primeira janta como casados</h3>
+              <p class="presente-desc">Porque cozinhar da preguiça</p>
+              <span class="presente-valor">R$ 150,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="janta_casados"
+                data-valor="150.00"
+                data-titulo="Primeira janta como casados">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/veia.jpg"
+                  alt="Ícone ilustrativo de veia" />
+              </div>
+              <h3>
+                Pra entrar na frente do fotógrafo na hora do beijo dos noivos...
+              </h3>
+              <p class="presente-desc">
+                ...e depois postar no status do whatsapp
+              </p>
+              <span class="presente-valor">R$ 1400,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="veia"
+                data-valor="1400.00"
+                data-titulo="Pra entrar na frente do fotógrafo na hora do beijo dos noivos...">
+                Comprar
+              </button>
+            </div>
+          </div>
+
+          <h2 class="presentes-categoria-titulo">Lua de mel</h2>
+
+          <div class="grid-presentes">
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/jantar.jpg"
+                  alt="Ícone ilustrativo de Jantar" />
+              </div>
+              <h3>Jantar da lua de mel</h3>
+              <p class="presente-desc">
+                Compra um jantar maravilhoso na lua de mel do casal
+              </p>
+              <span class="presente-valor">R$ 350,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="jantar_luna"
+                data-valor="350.00"
+                data-titulo="Jantar da lua de mel">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone presente-icone-cover">
+                <img
+                  src="./src/assets/img/gifts/massagem2.jpg"
+                  alt="Ícone ilustrativo de bagagem" />
+              </div>
+              <h3>Massagem relaxante para o noivo</h3>
+              <p class="presente-desc">
+                (Depois de ver o gasto do casamento...)
+              </p>
+              <span class="presente-valor">R$ 200,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="massagem_noivo"
+                data-valor="200.00"
+                data-titulo="Massagem relaxante para o noivo">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="300">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/airplane.jpg"
+                  alt="Ícone ilustrativo de passagem aérea" />
+              </div>
+              <h3>Passagens Aéreas</h3>
+              <p class="presente-desc">Ajude a nos levar para o paraíso!</p>
+              <span class="presente-valor">R$ 750,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="passagem"
+                data-valor="750.00"
+                data-titulo="Passagens Aéreas">
                 Comprar
               </button>
             </div>
@@ -205,22 +465,444 @@
               <div class="presente-icone">
                 <img
                   src="./src/assets/img/gifts/bagagem.jpg"
-                  alt="Ícone ilustrativo de bagagem"
-                />
+                  alt="Ícone ilustrativo de bagagem" />
               </div>
               <h3>Despacho de Bagagem da Carol</h3>
-              <p class="presente-desc">Para garantir que ela possa levar a mala de 23kg e não precise embarcar vestindo quatro casacos para economizar peso.</p>
+              <p class="presente-desc">
+                Para garantir que ela possa levar a mala de 23kg e não precise
+                embarcar vestindo quatro casacos para economizar peso.
+              </p>
               <span class="presente-valor">R$ 300,00</span>
               <button
                 class="btn-pagar-mp btn-comprar"
                 data-item="bagagem"
                 data-valor="300.00"
-                data-titulo="Despacho de Bagagem da Carol"
-              >
+                data-titulo="Despacho de Bagagem da Carol">
                 Comprar
               </button>
             </div>
 
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/drinks.jpg"
+                  alt="Ícone ilustrativo de drinks" />
+              </div>
+              <h3>Drinks</h3>
+              <p class="presente-desc">
+                Para brindar ao começo da vida de casados.
+              </p>
+              <span class="presente-valor">R$ 150,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="drinks"
+                data-valor="150.00"
+                data-titulo="Drinks">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/vinhos.jpg"
+                  alt="Ícone ilustrativo de vinhos" />
+              </div>
+              <h3>Vinhos</h3>
+              <p class="presente-desc">Uma noite de vinhos na lua de mel.</p>
+              <span class="presente-valor">R$ 200,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="vinhos"
+                data-valor="200.00"
+                data-titulo="Vinhos">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/por_do_sol.avif"
+                  alt="Ícone ilustrativo de por do sol" />
+              </div>
+              <h3>Passeio para assistir ao pôr do sol</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 250,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="por_do_sol"
+                data-valor="250.00"
+                data-titulo="Passeio para assistir ao pôr do sol">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/massagem_casal.png"
+                  alt="Ícone ilustrativo de massagem" />
+              </div>
+              <h3>Massagem relaxante para o casal</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 300,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="massagem"
+                data-valor="300.00"
+                data-titulo="Massagem relaxante para o casal">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/spa.jpg"
+                  alt="Ícone ilustrativo de spa" />
+              </div>
+              <h3>Dia de spa para o casal</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 650,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="spa"
+                data-valor="650.00"
+                data-titulo="Dia de spa para o casal">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/lua_de_mel.webp"
+                  alt="Ícone ilustrativo de lua de mel" />
+              </div>
+              <h3>Duas diárias da nossa lua de mel</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 1500,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="lua_de_mel"
+                data-valor="1500.00"
+                data-titulo="Duas diárias da nossa lua de mel">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/tamo_aqui.jpg"
+                  alt="Ícone ilustrativo de 'tamo_aqui'" />
+              </div>
+              <h3>Fundo para o famoso "já que estamos aqui…"</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 300,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="fundo_lua_de_mel"
+                data-valor="300.00"
+                data-titulo="Fundo para o famoso 'já que estamos aqui…'">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/merece.jpg"
+                  alt="Ícone ilustrativo de 'a gente merece'" />
+              </div>
+              <h3>Para aquela comprinha feita após dizer "a gente merece"</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 400,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="aquela_comprinha"
+                data-valor="400.00"
+                data-titulo="Para aquela comprinha feita após dizer 'a gente merece'">
+                Comprar
+              </button>
+            </div>
+          </div>
+
+          <h2 class="presentes-categoria-titulo">Essenciais</h2>
+          <div class="grid-presentes">
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="100">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/robo.jpg"
+                  alt="Ícone ilustrativo de robô aspirador" />
+              </div>
+              <h3>Robô Aspirador Xiaomi Robot Vacuum H40</h3>
+              <p class="presente-desc">
+                Para não dar briga na hora de limpar a casa
+              </p>
+              <span class="presente-valor">R$ 2000,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="robo_aspirador"
+                data-valor="2000.00"
+                data-titulo="Robô Aspirador Xiaomi Robot Vacuum H40">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/lava_louca.webp"
+                  alt="Ícone ilustrativo de lava louças" />
+              </div>
+              <h3>Lava Louças 8 Serviços Branco Touch Plus Midea</h3>
+              <p class="presente-desc">Poupa tempo :)</p>
+              <span class="presente-valor">R$ 1600,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="lava_loucas"
+                data-valor="1600.00"
+                data-titulo="Lava Louças 8 Serviços Branco Touch Plus Midea">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/roupa_cama.jpg"
+                  alt="Ícone ilustrativo de lava louças" />
+              </div>
+              <h3>Jogo de roupas de cama</h3>
+              <p class="presente-desc">Para um sono mais confortável</p>
+              <span class="presente-valor">R$ 550,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="jogo_roupas_cama"
+                data-valor="550.00"
+                data-titulo="Jogo de roupas de cama">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/jogo_toalha.webp"
+                  alt="Ícone ilustrativo de lava louças" />
+              </div>
+              <h3>Jogo de toalhas</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 250,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="jogo_toalhas"
+                data-valor="250.00"
+                data-titulo="Jogo de toalhas">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/guarda_roupa_casal.webp"
+                  alt="Ícone ilustrativo de guarda roupa casal" />
+              </div>
+              <h3>
+                Guarda Roupa Casal 2 Portas de Correr Dalla Costa 100% MDF
+              </h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 3000,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="guarda_roupa_casal"
+                data-valor="3000.00"
+                data-titulo="Guarda Roupa Casal 2 Portas de Correr Dalla Costa 100% MDF">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/sapateira.webp"
+                  alt="Ícone ilustrativo de sapateira modulada" />
+              </div>
+              <h3>Sapateira Modulada</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 2700,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="sapateira_modulada"
+                data-valor="2700.00"
+                data-titulo="Sapateira Modulada">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/tacas.webp"
+                  alt="Ícone ilustrativo de taças" />
+              </div>
+              <h3>Jogo 6 Taças Cristal Titanium</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 150,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="tacas_cristal_titanium"
+                data-valor="150.00"
+                data-titulo="Jogo 6 Taças Cristal Titanium">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/jogo-jantar.webp"
+                  alt="Ícone ilustrativo de jogo de jantar e chá" />
+              </div>
+              <h3>Jogo de Jantar e Chá 30 Peças Pomerode Schmidt</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 600,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="jogo_jantar_cha_30_pecas"
+                data-valor="600.00"
+                data-titulo="Jogo de Jantar e Chá 30 Peças Pomerode Schmidt">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/aspirador.jpg"
+                  alt="Ícone ilustrativo de aspirador de pó" />
+              </div>
+              <h3>WAP Extratora Higienizadora e Aspirador de Pó WAPORE UP</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 1200,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="aspirador_po_wapore_up"
+                data-valor="1200.00"
+                data-titulo="WAP Extratora Higienizadora e Aspirador de Pó WAPORE UP">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/aspirador2.jpg"
+                  alt="Ícone ilustrativo de aspirador de pó" />
+              </div>
+              <h3>Aspirador de Pó Vertical SILENT SPEED MAX</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 200,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="aspirador_po_silent_speed_max"
+                data-valor="200.00"
+                data-titulo="Aspirador de Pó Vertical SILENT SPEED MAX">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/genio_s.webp"
+                  alt="Ícone ilustrativo de cafeteira" />
+              </div>
+              <h3>Cafeteira Genio S Plus Preta</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 600,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="cafeteira_genio_s_plus_preta"
+                data-valor="600.00"
+                data-titulo="Cafeteira Genio S Plus Preta">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/penteadeira.webp"
+                  alt="Ícone ilustrativo de penteadeira" />
+              </div>
+              <h3>Penteadeira 5 Gavetas 1 Divisor Linden</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 550,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="penteadeira_5_gavetas_1_divisor_linden"
+                data-valor="550.00"
+                data-titulo="Penteadeira 5 Gavetas 1 Divisor Linden">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/ps5.webp"
+                  alt="Ícone ilustrativo de Playstation 5" />
+              </div>
+              <h3>Playstation 5</h3>
+              <p class="presente-desc">Para o noivo finalmente jogar GTA VI</p>
+              <span class="presente-valor">R$ 4000,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="playstation_5"
+                data-valor="4000.00"
+                data-titulo="Playstation 5">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/banheiro.jpg"
+                  alt="Ícone ilustrativo de Reforma do banheiro" />
+              </div>
+              <h3>Reforma do banheiro</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 1000,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="reforma_do_banheiro"
+                data-valor="1000.00"
+                data-titulo="Reforma do banheiro">
+                Comprar
+              </button>
+            </div>
+
+            <div class="card-presente" data-aos="fade-up" data-aos-delay="200">
+              <div class="presente-icone">
+                <img
+                  src="./src/assets/img/gifts/rack.webp"
+                  alt="Ícone ilustrativo de Rack" />
+              </div>
+              <h3>Rack Bancada Para Tv</h3>
+              <p class="presente-desc"></p>
+              <span class="presente-valor">R$ 730,00</span>
+              <button
+                class="btn-pagar-mp btn-comprar"
+                data-item="rack_bancada_para_tv"
+                data-valor="730.00"
+                data-titulo="Rack Bancada Para Tv">
+                Comprar
+              </button>
             </div>
           </div>
         </section>
@@ -233,8 +915,7 @@
         <button
           id="btn-musica"
           class="btn-musica-flutuante"
-          aria-label="Tocar música de fundo"
-        >
+          aria-label="Tocar música de fundo">
           <span class="icone-musica">🔇</span>
         </button>
 
