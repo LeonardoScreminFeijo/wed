@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { item, selectedPaymentMethod, formData } = req.body || {};
+  const { item, selectedPaymentMethod, formData, valor } = req.body || {};
 
   const presente = ITENS_PRESENTES[item];
   if (!presente) {
@@ -25,9 +25,23 @@ export default async function handler(req, res) {
     return;
   }
 
+  let transactionAmount = presente.valor;
+
+  if (presente.livre) {
+    const valorEnviado = Number(valor);
+    if (!Number.isFinite(valorEnviado) || valorEnviado < presente.minimo) {
+      res.status(400).json({
+        sucesso: false,
+        mensagem: `Valor mínimo de R$ ${presente.minimo.toFixed(2)} para este presente.`,
+      });
+      return;
+    }
+    transactionAmount = valorEnviado;
+  }
+
   // Payment Brick manda payment_method_id "pix" ou os dados de cartão (token, installments, etc).
   const corpoPagamento = {
-    transaction_amount: presente.valor,
+    transaction_amount: transactionAmount,
     description: presente.titulo,
     payment_method_id: formData.payment_method_id,
     payer: formData.payer,

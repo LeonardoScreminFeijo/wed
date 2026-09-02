@@ -1094,7 +1094,7 @@ body.dark-mode .btn-copiar-pix.copiado {
 
 .grid-presentes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
@@ -1140,6 +1140,41 @@ body.dark-mode .btn-copiar-pix.copiado {
 
 .presente-icone-cover img {
   object-fit: cover;
+}
+
+.presente-icone-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.input-valor-livre-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #8b0000;
+}
+
+.input-valor-livre {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #8b0000;
+  background: transparent;
+  font-family: inherit;
+}
+
+body.dark-mode .input-valor-livre-wrapper {
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .presente-desc {
