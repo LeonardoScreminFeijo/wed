@@ -1,5 +1,3 @@
-import { protegerPagina } from "./login.js";
-
 // ─── CONFIGURAÇÃO ─────────────────────────────────────────────────────────────
 // Para adicionar fotos:
 // 1. Abra a foto no Google Photos → compartilhar → copiar link
@@ -14,8 +12,6 @@ const FOTOS = [
 let currentIndex = 0;
 
 export function iniciarGaleria() {
-  if (!protegerPagina()) return;
-
   const grid = document.getElementById("galeria-grid");
   if (!grid) return;
 

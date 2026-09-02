@@ -1,4 +1,4 @@
-import { protegerPagina, obterUsuario, isNoivos, isTestUser } from "./login.js";
+import { obterUsuario, isNoivos, isTestUser } from "./login.js";
 import { mostrarSucesso, mostrarErro } from "./toast.js";
 
 const API_URL = import.meta.env.VITE_API_URL_MURAL;
@@ -8,7 +8,6 @@ export function iniciarMural() {
   const muralGrid = document.getElementById("mural-grid");
 
   if (!formMural || !muralGrid) return;
-  if (!protegerPagina()) return;
 
   if (isTestUser()) {
     const aviso = document.createElement("p");
