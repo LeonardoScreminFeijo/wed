@@ -71,7 +71,14 @@ function navLightbox(dir) {
   cnt.textContent = `${currentIndex + 1} / ${FOTOS.length}`;
 }
 
+let lightboxConfigurado = false;
+
 function configurarLightbox() {
+  // O #lightbox fica fora do #page-root (persiste na navegação suave):
+  // liga os eventos uma única vez.
+  if (lightboxConfigurado) return;
+  lightboxConfigurado = true;
+
   document.getElementById("lightbox-fechar")
     .addEventListener("click", fecharLightbox);
   document.getElementById("lightbox-prev")
