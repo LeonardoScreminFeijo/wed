@@ -169,18 +169,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const item = botao.getAttribute("data-item");
       const titulo = botao.getAttribute("data-titulo");
 
-      if (botao.getAttribute("data-livre") === "true") {
+      // Pix Livre: o valor vem do input, com um mínimo obrigatório
+      if (botao.dataset.livre === "true") {
+        const minimo = parseFloat(botao.dataset.valorMinimo) || 0;
         const input = document.getElementById("input-pix-livre");
-        const valorLivre = parseFloat(input.value.replace(",", "."));
-        const minimo = parseFloat(input.getAttribute("min"));
+        const valor = parseFloat(input?.value);
 
-        if (!Number.isFinite(valorLivre) || valorLivre < minimo) {
-          mostrarErro(`Digite um valor de no mínimo R$ ${minimo.toFixed(2)}.`);
-          input.focus();
+        if (Number.isNaN(valor) || valor < minimo) {
+          mostrarErro(
+            `Informe um valor de no mínimo R$ ${minimo.toFixed(2).replace(".", ",")}.`,
+          );
+          input?.focus();
           return;
         }
 
-        abrirModalPagamento(item, valorLivre, titulo);
+        abrirModalPagamento(item, valor, titulo);
         return;
       }
 

@@ -1,6 +1,5 @@
 import "./css/style.css";
 import AOS from "aos";
-import "aos/dist/aos.css";
 import { iniciarContagem } from "./js/countdown.js";
 import { configurarBotaoCalendario } from "./js/calendar.js";
 import { iniciarTimeline } from "./js/timeline.js";
@@ -22,16 +21,15 @@ iniciarSanfona();
 iniciarRSVP();
 iniciarLogin();
 
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 50,
-    });
-    AOS.refresh();
-  }, 100);
+// Inicia já (o script é module/defer, então o DOM está pronto) para
+// revelar o que está visível sem esperar todas as imagens carregarem.
+// O refresh no load reajusta as posições depois que tudo carregou.
+AOS.init({
+  duration: 800,
+  once: true,
+  offset: 50,
 });
+window.addEventListener("load", () => AOS.refresh());
 
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;

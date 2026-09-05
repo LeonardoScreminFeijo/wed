@@ -106,7 +106,7 @@ MP_ACCESS_TOKEN      → Access Token do Mercado Pago (secret, só backend — N
 | `confetti.js`   | Confetes (canvas-confetti)                            |
 | `toast.js`      | Toasts de feedback (toastify-js)                      |
 | `calendar.js`   | Botão "Adicionar ao Calendário" (.ics)                |
-| `timeline.js`   | Timeline horizontal (Nossa História)                  |
+| `timeline.js`   | Timeline vertical (Nossa História) — clique na foto abre a caixa de diálogo ao lado |
 | `accordion.js`  | Sanfona de FAQ/Dicas                                  |
 | `music.js`      | Player de música de fundo flutuante                   |
 

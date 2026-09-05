@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { item, selectedPaymentMethod, formData, valor } = req.body || {};
+  const { item, valor, selectedPaymentMethod, formData } = req.body || {};
 
   const presente = ITENS_PRESENTES[item];
   if (!presente) {
@@ -25,23 +25,24 @@ export default async function handler(req, res) {
     return;
   }
 
-  let transactionAmount = presente.valor;
-
+  // Itens de valor fixo usam o valor da whitelist. O "Pix Livre" aceita o
+  // valor do convidado, mas o server revalida o piso — nunca confia no client.
+  let valorPagamento = presente.valor;
   if (presente.livre) {
-    const valorEnviado = Number(valor);
-    if (!Number.isFinite(valorEnviado) || valorEnviado < presente.minimo) {
+    const valorNumerico = Number(valor);
+    if (!Number.isFinite(valorNumerico) || valorNumerico < presente.valorMinimo) {
       res.status(400).json({
         sucesso: false,
-        mensagem: `Valor mínimo de R$ ${presente.minimo.toFixed(2)} para este presente.`,
+        mensagem: `Valor mínimo de R$ ${presente.valorMinimo.toFixed(2)}`,
       });
       return;
     }
-    transactionAmount = valorEnviado;
+    valorPagamento = Math.round(valorNumerico * 100) / 100;
   }
 
   // Payment Brick manda payment_method_id "pix" ou os dados de cartão (token, installments, etc).
   const corpoPagamento = {
-    transaction_amount: transactionAmount,
+    transaction_amount: valorPagamento,
     description: presente.titulo,
     payment_method_id: formData.payment_method_id,
     payer: formData.payer,
