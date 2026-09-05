@@ -73,63 +73,162 @@
           <h1 class="section-title">Nossa História</h1>
           <p class="section-subtitle">A nossa jornada juntos</p>
 
-          <div id="story-display" class="story-display">
-            <h3>
-              Arraste para o lado para percorrer por nossa história. Toque em
-              uma foto para viajar no tempo conosco...
-            </h3>
-            <p></p>
-          </div>
+          <p class="timeline-intro">
+            Role a página para percorrer a nossa história. Passe o cursor ou toque, no celular, sobre uma foto para reviver
+            aquele momento conosco...
+          </p>
 
-          <div class="timeline-container">
-            <button class="scroll-seta seta-esquerda" id="seta-esquerda" aria-label="Rolar para a esquerda">❮</button>
-            <button class="scroll-seta seta-direita" id="seta-direita" aria-label="Rolar para a direita">❯</button>
+          <div class="timeline-track" id="timeline-track">
+            <div class="timeline-line"></div>
 
-            <div class="timeline-wrapper" id="timeline-wrapper">
-              <div class="timeline-track">
-              <div class="timeline-line"></div>
-
-              <div
-                class="timeline-item item-up"
-                data-story="Nossos caminhos se cruzaram pela primeira vez em Curitiba. Foi o início de uma amizade que logo se transformou em algo mais forte."
-                data-aos="fade-up"
-              >
-                <div class="timeline-marker"><div class="dot"></div></div>
-                <div class="timeline-content">
-                  <img src="./src/assets/img/foto-casal.webp" alt="Início" />
-                  <p class="year-label">2022</p>
-                </div>
+            <div
+              class="timeline-item item-left"
+              data-story="Surgiu uma amizade no jardim de infância, sem sequer imaginar o que o futuro reservava."
+              data-aos="fade-right"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2004_1.jpg" alt="Onde tudo começou" />
+                <p class="year-label">2004</p>
               </div>
+            </div>
 
-              <div
-                class="timeline-item item-down"
-                data-story="O primeiro beijo oficial, marcando o início de nossa jornada como namorados. Um dia inesquecível!"
-                data-aos="fade-down"
-              >
-                <div class="timeline-content">
-                  <img src="./src/assets/img/foto-casal.webp" alt="Namoro" />
-                  <p class="year-label">2024</p>
-                </div>
-                <div class="timeline-marker"><div class="dot"></div></div>
+            <div
+              class="timeline-item item-right"
+              data-story="A amizade virtual cresce e agora já começamos a nos tornar inseparáveis, ainda que grandes amigos."
+              data-aos="fade-left"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2017_1.jpg" alt="Começo do namoro" />
+                <p class="year-label">2018</p>
               </div>
+            </div>
 
-              <div
-                class="timeline-item item-up"
-                data-story="Com o coração batendo forte, demos o 'SIM' mais importante de nossas vidas."
-                data-aos="fade-up"
-              >
-                <div class="timeline-marker"><div class="dot"></div></div>
-                <div class="timeline-content">
-                  <img src="./src/assets/img/foto-casal.webp" alt="Noivado" />
-                  <p class="year-label">2026</p>
-                </div>
+            <div
+              class="timeline-item item-left"
+              data-story="Em junho de 2019, sob o pretexto de brincadeira, vem o primeiro beijo dos amigos. E na exata data de 14 de Julho, inicia-se um namoro."
+              data-aos="fade-right"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2019.jpeg" alt="Noivado" />
+                <p class="year-label">2019</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-right"
+              data-story="O primeiro dia dos namorados oficial, com um jantar num restaurante maravilhoso e com a vista mais bonita de Curitiba!"
+              data-aos="fade-left"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2020_1.jpg" alt="Onde tudo começou" />
+                <p class="year-label">2020</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-left"
+              data-story="Com a pandemia, nossa diversão acontecia em trilhas, acampamentos e com o simples estar ao lado um do outro, em casa mesmo. Aqui se iniciou uma tradição do casal, mantida até hoje, em que salvamos vídeos que nos lembram um do outro, sejam eles conselhos, piadas, declarações..."
+              data-aos="fade-right"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2021.jpeg" alt="Noivado" />
+                <p class="year-label">2021</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-right"
+              data-story='Ano em que, após um "tempo" no relacionamento, aprendemos a valorizar o outro. Aqui, crescemos e amadurecemos, valorizando ainda mais nosso amor.'
+              data-aos="fade-left"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2022_1.jpg" alt="Onde tudo começou" />
+                <p class="year-label">2022</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-left"
+              data-story='Ano em que finalmente aproveitamos nossa juventude! Festamos, brindamos, rimos e criamos muitas das melhores memórias que temos'
+              data-aos="fade-right"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2023.jpeg" alt="Onde tudo começou" />
+                <p class="year-label">2023</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-right"
+              data-story='Compramos nosso apartamento! Aqui já era certo que ficaríamos juntos pra sempre, só começamos a formalizar este fato...'
+              data-aos="fade-left"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2024.jpeg" alt="Onde tudo começou" />
+                <p class="year-label">2024</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-left"
+              data-story='Fizemos nossa primeira grande viagem internacional, um cruzeiro pra Argentina e Uruguai. O pedido de casamento finalmente veio, da maneira mais espontânea e inesperada possível'
+              data-aos="fade-right"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2025.jpeg" alt="Onde tudo começou" />
+                <p class="year-label">2025</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-right"
+              data-story='Nossa família aumentou! Adotamos o Bentinho, e com ele, novos aprendizados apareceram.'
+              data-aos="fade-left"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/bento.jpeg" alt="Onde tudo começou" />
+                <p class="year-label">2025</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-left"
+              data-story='Ano em que, acima de tudo, o foco tornou-se a preparação para o dia mais emocionante de nossas vidas! Decisões, prioridades, conversas, escolhas...'
+              data-aos="fade-right"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/2026_1.jpg" alt="Onde tudo começou" />
+                <p class="year-label">2026</p>
+              </div>
+            </div>
+
+            <div
+              class="timeline-item item-right"
+              data-story='O melhor capítulo ainda está por vir, e começa em 24 de abril de 2027, com você ao nosso lado.'
+              data-aos="fade-left"
+            >
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-content">
+                <img src="./src/assets/img/historia/loading.gif" alt="Onde tudo começou" />
+                <p class="year-label">2027</p>
               </div>
             </div>
           </div>
         </section>
 
         <audio id="audio-casamento" loop>
-          <source src="public/audio/ipanema.m4a" type="audio/mp4" />
+          <source src="/audio/ipanema.m4a" type="audio/mp4" />
           O seu navegador não suporta o elemento de áudio.
         </audio>
 

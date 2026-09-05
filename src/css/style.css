@@ -1,4 +1,8 @@
 @import "./variables.css";
+/* Carregado aqui (e não via JS) para ser render-blocking: assim os
+   elementos com data-aos já nascem invisíveis, sem o "pisca" de
+   aparecer → sumir → reaparecer com a animação. */
+@import "aos/dist/aos.css";
 
 * {
   margin: 0;
@@ -167,7 +171,6 @@ body.dark-mode .btn-tema-icon {
 body.dark-mode .sidebar,
 body.dark-mode .time-box,
 body.dark-mode .evento-card,
-body.dark-mode .story-display,
 body.dark-mode .accordion-item,
 body.dark-mode .accordion-header,
 body.dark-mode .accordion-content,
@@ -189,8 +192,7 @@ body.dark-mode .sidebar {
 }
 
 body.dark-mode .presente-desc,
-body.dark-mode .evento-card .dica,
-body.dark-mode .story-display h3 {
+body.dark-mode .evento-card .dica {
   color: #cccccc;
 }
 
@@ -416,7 +418,7 @@ body.dark-mode .btn-copiar-pix.copiado {
   align-items: center;
   padding: 20px;
   position: relative;
-  background-image: url("../assets/img/foto-casal.webp");
+  background-image: url("../assets/img/punta.JPEG");
   background-size: cover;
   background-position: center;
   margin: -40px -40px 0 -40px;
@@ -596,215 +598,333 @@ body.dark-mode .btn-copiar-pix.copiado {
 }
 
 /* ==========================================
-   Página Nossa História (Linha do Tempo)
+   Página Nossa História (Linha do Tempo Vertical)
    ========================================== */
-.story-display {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px solid var(--color-yellow);
-  min-height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 60px;
-  opacity: 0.8;
-  transition: opacity 0.5s ease;
-}
-
-.story-display.active {
-  opacity: 1;
-}
-.story-display h3 {
-  font-size: 1.1rem;
-  color: #7f8c8d;
-}
-.story-display p {
+.timeline-intro {
+  max-width: 620px;
+  margin: 0 auto 60px;
   font-size: 1.1rem;
   line-height: 1.6;
-}
-
-.timeline-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  padding: 38px 0;
-  scrollbar-width: none;
-  overflow-y: hidden;
-  touch-action: pan-y pan-x;
-  -webkit-overflow-scrolling: touch;
+  color: #7f8c8d;
 }
 
 .timeline-track {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  min-width: 800px;
-  height: 550px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 0 40px;
 }
 
+/* Linha vertical central */
 .timeline-line {
   position: absolute;
-  top: 50%;
-  left: 5%;
-  right: 5%;
-  height: 4px;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
   background: var(--color-orange);
-  transform: translateY(-50%);
+  transform: translateX(-50%);
   z-index: 0;
 }
 
 .timeline-item {
   position: relative;
-  height: 100%;
-  width: 150px;
+  width: 50%;
+  box-sizing: border-box;
+  margin-bottom: 70px;
   cursor: pointer;
 }
-
-/* O ponto que conecta a história à linha principal */
-.timeline-marker {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
+.timeline-item:last-child {
+  margin-bottom: 0;
 }
 
-.dot {
+.item-left {
+  margin-left: 0;
+  padding-right: 50px;
+  text-align: right;
+}
+.item-right {
+  margin-left: 50%;
+  padding-left: 50px;
+  text-align: left;
+}
+
+/* Haste que liga a foto à linha central */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  width: 38px;
+  height: 3px;
+  background: var(--color-coral);
+  z-index: 1;
+}
+.item-left::after {
+  right: 0;
+}
+.item-right::after {
+  left: 0;
+}
+
+/* Ponto sobre a linha central */
+.timeline-dot {
+  position: absolute;
+  top: 60px;
   width: 16px;
   height: 16px;
   background-color: var(--color-wine);
   border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.item-left .timeline-dot {
+  right: -8px;
+}
+.item-right .timeline-dot {
+  left: -8px;
 }
 
-/* As hastes que seguram as fotos */
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  background: var(--color-coral);
-  z-index: 1;
-}
-
-.item-down::before {
-  top: 50%;
-  height: 80px;
-}
-.item-up::before {
-  bottom: 50%;
-  height: 80px;
-}
-
-/* O bloco que contém a foto e o ano e fará a animação de crescer */
+/* Bloco com a foto e o ano */
 .timeline-content {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
+  position: relative;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
-  z-index: 3;
-  width: 200px;
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.item-down .timeline-content {
-  top: calc(50% + 80px);
-  transform-origin: top center;
-}
-
-.item-up .timeline-content {
-  bottom: calc(50% + 80px);
-  flex-direction: column-reverse;
-  transform-origin: bottom center;
-}
-
-.item-up .timeline-content .year-label {
-  margin-top: 0;
-  margin-bottom: 10px;
+  gap: 10px;
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
 }
 
 .timeline-content img {
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   border: 4px solid var(--color-coral);
   object-fit: cover;
-  transition: border-color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .year-label {
   font-size: 1.4rem;
   font-weight: bold;
-  margin-top: 10px;
 }
 
-.timeline-track.has-active .timeline-item {
-  opacity: 0.4;
-  filter: blur(2px) grayscale(50%);
+/* Caixa de diálogo — surge ao lado da foto, no mesmo sentido do item */
+.item-dialog {
+  position: absolute;
+  top: 0;
+  width: 260px;
+  background: white;
+  border: 1px solid var(--color-yellow);
+  border-radius: 16px;
+  padding: 18px 22px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+  z-index: 30;
+  box-shadow: 0 15px 35px rgba(136, 10, 31, 0.12);
+}
+.item-left .item-dialog {
+  right: 100%;
+  margin-right: 34px;
+}
+.item-right .item-dialog {
+  left: 100%;
+  margin-left: 34px;
+}
+.item-dialog p {
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.timeline-track.has-active .timeline-item.active {
+/* Seta da caixa apontando para a foto */
+.item-dialog::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  border: 10px solid transparent;
+}
+.item-left .item-dialog::after {
+  left: 100%;
+  border-left-color: white;
+}
+.item-right .item-dialog::after {
+  right: 100%;
+  border-right-color: white;
+}
+
+.timeline-item.active .item-dialog {
   opacity: 1;
-  filter: none;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Destaque do item ativo / esmaece só a FOTO dos demais
+   (o traço e a bolinha que ligam à linha central não esmaecem) */
+.timeline-track.has-active .timeline-item .timeline-content {
+  opacity: 0.4;
+  filter: grayscale(45%);
+}
+.timeline-track.has-active .timeline-item.active {
   z-index: 20;
 }
-
 .timeline-track.has-active .timeline-item.active .timeline-content {
-  transform: translateX(-50%) scale(1.4);
+  opacity: 1;
+  filter: none;
 }
-
 .timeline-item.active .timeline-content img {
   border-color: var(--color-wine);
-  box-shadow: 0 20px 40px rgba(136, 10, 31, 0.5);
+  box-shadow: 0 20px 40px rgba(136, 10, 31, 0.4);
+  transform: scale(1.06);
 }
 
-.timeline-container {
-  position: relative;
-  width: 100%;
+/* Desktop (mouse): o texto aparece ao passar o cursor sobre a foto.
+   No mobile o comportamento continua por toque, via .active (timeline.js). */
+@media (hover: hover) and (pointer: fine) {
+  /* Só reage ao hover na foto em si (.timeline-content), não na coluna
+     inteira do item nem no espaço vazio da linha do tempo. */
+  .timeline-content:hover .item-dialog {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  /* Esmaece só a FOTO dos OUTROS marcos enquanto uma foto está sob o cursor
+     (o traço e a bolinha continuam visíveis) */
+  .timeline-track:has(.timeline-content:hover)
+    .timeline-item:not(:has(.timeline-content:hover))
+    .timeline-content {
+    opacity: 0.9;
+    filter: opacity(80%);
+  }
+  .timeline-item:has(.timeline-content:hover) {
+    z-index: 20;
+  }
+  .timeline-content:hover img {
+    border-color: var(--color-wine);
+    box-shadow: 0 20px 40px rgba(136, 10, 31, 0.4);
+    transform: scale(1.06);
+  }
 }
 
-.scroll-seta {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--color-wine);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    opacity 0.3s ease,
-    background 0.3s ease;
-
-  opacity: 0;
-  pointer-events: none;
+body.dark-mode .item-dialog {
+  background-color: #1e1e1e;
+  border-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-dark);
+}
+body.dark-mode .item-left .item-dialog::after {
+  border-left-color: #1e1e1e;
+}
+body.dark-mode .item-right .item-dialog::after {
+  border-right-color: #1e1e1e;
 }
 
-.scroll-seta.visivel {
-  opacity: 1;
-  pointer-events: auto;
+/* Responsivo: timeline continua centralizada; a caixa de diálogo aparece
+   no lado OPOSTO ao da foto, ocupando a metade vazia */
+@media (max-width: 900px) {
+  .timeline-track {
+    padding: 10px 0 30px;
+  }
+  .timeline-item {
+    margin-bottom: 55px;
+  }
+  .item-left {
+    padding-right: 30px;
+  }
+  .item-right {
+    padding-left: 30px;
+  }
+
+  /* content encolhe até a largura da foto e mantém align-items: center
+     (herdado), então o ano fica centralizado sob a foto; o bloco todo é
+     encostado na linha central pelo text-align de .item-left / .item-right */
+  .timeline-content img {
+    width: 118px;
+    height: 118px;
+  }
+  .year-label {
+    font-size: 1.2rem;
+  }
+
+  .timeline-item::after {
+    width: 30px;
+    top: 59px;
+  }
+  .timeline-dot {
+    top: 59px;
+  }
+
+  /* Foto à esquerda -> caixa à direita da linha; foto à direita -> caixa à esquerda */
+  .item-left .item-dialog {
+    left: 100%;
+    right: auto;
+    margin-left: 42px;
+    margin-right: 0;
+    width: min(37vw, 200px);
+  }
+  .item-right .item-dialog {
+    right: 100%;
+    left: auto;
+    margin-right: 42px;
+    margin-left: 0;
+    width: min(37vw, 200px);
+  }
+  .item-left .item-dialog::after {
+    left: auto;
+    right: 100%;
+    border-left-color: transparent;
+    border-right-color: white;
+  }
+  .item-right .item-dialog::after {
+    right: auto;
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: white;
+  }
+  body.dark-mode .item-left .item-dialog::after {
+    border-left-color: transparent;
+    border-right-color: #1e1e1e;
+  }
+  body.dark-mode .item-right .item-dialog::after {
+    border-right-color: transparent;
+    border-left-color: #1e1e1e;
+  }
 }
 
-.scroll-seta:hover {
-  background: var(--color-coral);
-}
-
-.seta-esquerda {
-  left: -10px;
-}
-.seta-direita {
-  right: -10px;
+@media (max-width: 520px) {
+  .item-left {
+    padding-right: 22px;
+  }
+  .item-right {
+    padding-left: 22px;
+  }
+  .timeline-content img {
+    width: 96px;
+    height: 96px;
+  }
+  .timeline-item::after {
+    width: 22px;
+    top: 48px;
+  }
+  .timeline-dot {
+    top: 48px;
+  }
+  .item-left .item-dialog,
+  .item-right .item-dialog {
+    width: min(40vw, 200px);
+    padding: 13px 15px;
+  }
+  .item-dialog p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
 }
 
 /* ==========================================
@@ -1101,6 +1221,13 @@ body.dark-mode .btn-copiar-pix.copiado {
   margin-bottom: 1rem;
 }
 
+/* Categoria com um único presente (ex.: Pix Livre): o auto-fill deixa
+   colunas vazias e joga o card para a esquerda — aqui usamos uma só
+   coluna, que o justify-content: center centraliza. */
+.grid-presentes:has(.card-presente:only-child) {
+  grid-template-columns: minmax(280px, 320px);
+}
+
 .card-presente {
   background: #ffffff;
   border: 1px solid #eee;
@@ -1155,6 +1282,34 @@ body.dark-mode .btn-copiar-pix.copiado {
   font-size: 1.2rem;
   color: #8b0000;
   margin-bottom: 1.5rem;
+}
+
+.input-valor-livre-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #8b0000;
+}
+
+.input-valor-livre {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #8b0000;
+  background: transparent;
+  font-family: inherit;
+}
+
+body.dark-mode .input-valor-livre-wrapper {
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .btn-copiar-pix {

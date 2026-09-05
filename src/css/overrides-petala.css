@@ -57,9 +57,9 @@ h1, h2 {
 .hero-section::before {
   background: linear-gradient(
     to bottom,
-    rgba(253, 197, 102, 0.08) 0%,
-    rgba(136, 10,  31,  0.50) 55%,
-    rgba(46,  10,  8,   0.90) 100%
+    rgba(102, 112, 253, 0.08) 0%,
+    rgba(39, 10, 136, 0.215) 95%,
+    rgba(9, 8, 46, 0.46) 100%
   );
 }
 
@@ -479,7 +479,7 @@ h1, h2 {
   background: var(--color-yellow);
 }
 
-.timeline-item::before {
+.timeline-item::after {
   background: var(--color-orange);
 }
 
@@ -487,20 +487,20 @@ h1, h2 {
   border-color: var(--color-yellow);
 }
 
-.dot {
+.timeline-dot {
   background-color: var(--color-wine);
 }
 
-.story-display {
+.item-dialog {
   border-color: var(--color-yellow);
   border-radius: 0;
 }
 
-.story-display h3 {
+.item-dialog p {
   font-family: var(--font-titles);
   font-style: italic;
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 }
 
 

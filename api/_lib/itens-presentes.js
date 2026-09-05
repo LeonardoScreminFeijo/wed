@@ -45,4 +45,6 @@ export const ITENS_PRESENTES = {
   playstation_5: { titulo: "Playstation 5", valor: 4000.0 },
   reforma_do_banheiro: { titulo: "Reforma do banheiro", valor: 1000.0 },
   rack_bancada_para_tv: { titulo: "Rack Bancada Para Tv", valor: 730.0 },
+  // Valor definido pelo convidado no client; o server só valida o piso.
+  pix_livre: { titulo: "Pix Livre", livre: true, valorMinimo: 150.0 },
 };

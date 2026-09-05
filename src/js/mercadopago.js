@@ -117,7 +117,7 @@ async function renderizarBrick(item, valor, titulo) {
         return fetch("/api/mp-criar-pagamento", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ item, selectedPaymentMethod, formData }),
+          body: JSON.stringify({ item, valor, selectedPaymentMethod, formData }),
         })
           .then((resposta) => resposta.json())
           .then((resultado) => {
@@ -167,8 +167,27 @@ document.addEventListener("DOMContentLoaded", () => {
   botoesPagar.forEach((botao) => {
     botao.addEventListener("click", () => {
       const item = botao.getAttribute("data-item");
-      const valor = parseFloat(botao.getAttribute("data-valor"));
       const titulo = botao.getAttribute("data-titulo");
+
+      // Pix Livre: o valor vem do input, com um mínimo obrigatório
+      if (botao.dataset.livre === "true") {
+        const minimo = parseFloat(botao.dataset.valorMinimo) || 0;
+        const input = document.getElementById("input-pix-livre");
+        const valor = parseFloat(input?.value);
+
+        if (Number.isNaN(valor) || valor < minimo) {
+          mostrarErro(
+            `Informe um valor de no mínimo R$ ${minimo.toFixed(2).replace(".", ",")}.`,
+          );
+          input?.focus();
+          return;
+        }
+
+        abrirModalPagamento(item, valor, titulo);
+        return;
+      }
+
+      const valor = parseFloat(botao.getAttribute("data-valor"));
       abrirModalPagamento(item, valor, titulo);
     });
   });
