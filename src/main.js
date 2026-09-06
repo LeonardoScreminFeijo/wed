@@ -8,82 +8,91 @@ import { iniciarRSVP } from "./js/rsvp.js";
 import { iniciarLogin } from "./js/login.js";
 import { iniciarMural } from "./js/mural.js";
 import { iniciarMusica } from "./js/music.js";
+import { iniciarPagamentos } from "./js/mercadopago.js";
+import { iniciarGaleria } from "./js/gallery.js";
+import { iniciarNavegacaoSuave } from "./js/soft-nav.js";
 
-const countdownElement = document.getElementById("countdown");
-if (countdownElement) {
-  const dataCasamento = new Date(2027, 3, 24, 16, 0, 0);
-  iniciarContagem(dataCasamento);
+const DATA_CASAMENTO = new Date(2027, 3, 24, 16, 0, 0);
+
+// ── Inits que rodam a CADA página (primeira carga + navegação suave) ──
+// Cada função só age se encontrar seus elementos dentro do #page-root novo.
+function iniciarPagina() {
+  iniciarContagem(DATA_CASAMENTO);
+  configurarBotaoCalendario();
+  iniciarTimeline();
+  iniciarSanfona();
+  iniciarRSVP();
+  iniciarMural();
+  iniciarPagamentos();
+  iniciarGaleria();
+  AOS.refreshHard();
 }
 
-configurarBotaoCalendario();
-iniciarTimeline();
-iniciarSanfona();
-iniciarRSVP();
-iniciarLogin();
+// ── Inits do "shell" que persiste entre navegações (rodam UMA vez) ──
+function iniciarShell() {
+  configurarTema();
+  configurarMenu();
+  iniciarLogin();
+  iniciarMusica();
 
-// Inicia já (o script é module/defer, então o DOM está pronto) para
-// revelar o que está visível sem esperar todas as imagens carregarem.
-// O refresh no load reajusta as posições depois que tudo carregou.
-AOS.init({
-  duration: 800,
-  once: true,
-  offset: 50,
-});
-window.addEventListener("load", () => AOS.refresh());
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 50,
+  });
 
-const themeToggle = document.getElementById("theme-toggle");
-const body = document.body;
+  iniciarNavegacaoSuave(iniciarPagina);
+  window.addEventListener("load", () => AOS.refresh());
+}
 
-if (themeToggle) {
-  // 1. Lê a memória do navegador
+function configurarTema() {
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+  if (!themeToggle) return;
+
   const currentTheme = localStorage.getItem("theme");
-
-  // 2. Se o utilizador já usava o modo escuro, liga a chave e aplica o tema
   if (currentTheme === "dark") {
     body.classList.add("dark-mode");
-    themeToggle.checked = true; // Empurra a bolinha para a direita
+    themeToggle.checked = true;
   } else {
-    themeToggle.checked = false; // Mantém a bolinha na esquerda
+    themeToggle.checked = false;
   }
 
-  // 3. Ouve o deslizar da chave
   themeToggle.addEventListener("change", () => {
     if (themeToggle.checked) {
-      body.classList.add("dark-mode"); // Ativa cores escuras
+      body.classList.add("dark-mode");
       localStorage.setItem("theme", "dark");
     } else {
-      body.classList.remove("dark-mode"); // Volta para o claro
+      body.classList.remove("dark-mode");
       localStorage.setItem("theme", "light");
     }
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function configurarMenu() {
   const btnMenu = document.getElementById("btn-menu-global");
   const layoutWrapper = document.getElementById("app-layout");
-  iniciarMusica();
+  if (!btnMenu || !layoutWrapper) return;
 
-  if (btnMenu && layoutWrapper) {
-    btnMenu.addEventListener("click", () => {
-      layoutWrapper.classList.toggle("menu-aberto");
+  btnMenu.addEventListener("click", () => {
+    layoutWrapper.classList.toggle("menu-aberto");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", () => {
+      layoutWrapper.classList.remove("menu-aberto");
     });
+  });
 
-    const linksMenu = document.querySelectorAll(".nav-links a");
-    linksMenu.forEach((link) => {
-      link.addEventListener("click", () => {
+  const conteudoPrincipal = document.querySelector(".main-content");
+  if (conteudoPrincipal) {
+    conteudoPrincipal.addEventListener("click", () => {
+      if (layoutWrapper.classList.contains("menu-aberto")) {
         layoutWrapper.classList.remove("menu-aberto");
-      });
+      }
     });
-
-    const conteudoPrincipal = document.querySelector(".main-content");
-    if (conteudoPrincipal) {
-      conteudoPrincipal.addEventListener("click", () => {
-        if (layoutWrapper.classList.contains("menu-aberto")) {
-          layoutWrapper.classList.remove("menu-aberto");
-        }
-      });
-    }
   }
-});
+}
 
-iniciarMural();
+iniciarShell();
+iniciarPagina();

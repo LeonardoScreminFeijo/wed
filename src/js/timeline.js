@@ -1,6 +1,15 @@
+// Handler no document para "tocar fora fecha a caixa" — guardado no módulo
+// para ser removido antes de re-adicionar (navegação suave não empilha).
+let fecharAoTocarFora = null;
+
 export function iniciarTimeline() {
   const timelineItems = document.querySelectorAll(".timeline-item");
   const timelineTrack = document.getElementById("timeline-track");
+
+  if (fecharAoTocarFora) {
+    document.removeEventListener("pointerup", fecharAoTocarFora);
+    fecharAoTocarFora = null;
+  }
 
   if (!timelineTrack || !timelineItems.length) return;
 
@@ -41,9 +50,10 @@ export function iniciarTimeline() {
   });
 
   // Tocar fora da linha do tempo fecha a caixa aberta
-  document.addEventListener("pointerup", (evento) => {
+  fecharAoTocarFora = (evento) => {
     if (evento.pointerType === "mouse") return;
     if (evento.target.closest(".timeline-item")) return;
     fecharTodos();
-  });
+  };
+  document.addEventListener("pointerup", fecharAoTocarFora);
 }

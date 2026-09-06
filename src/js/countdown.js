@@ -1,6 +1,16 @@
+let timer = null;
+
 export function iniciarContagem(dataEvento) {
   const countdownElement = document.getElementById("countdown");
-  if (!countdownElement) return;
+
+  // Sem #countdown nesta página: garante que um timer antigo não siga rodando
+  if (!countdownElement) {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+    return;
+  }
 
   countdownElement.innerHTML = `
         <div class="time-box"><span id="days">00</span><p>Dias</p></div>
@@ -15,6 +25,10 @@ export function iniciarContagem(dataEvento) {
 
     if (distancia < 0) {
       countdownElement.innerHTML = "<h3>É hoje o grande dia!</h3>";
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
       return;
     }
 
@@ -40,6 +54,8 @@ export function iniciarContagem(dataEvento) {
       .padStart(2, "0");
   };
 
-  setInterval(atualizar, 1000);
+  // Evita empilhar intervalos ao reinicializar (navegação suave)
+  if (timer) clearInterval(timer);
+  timer = setInterval(atualizar, 1000);
   atualizar();
 }

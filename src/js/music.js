@@ -41,16 +41,20 @@ export function iniciarMusica() {
   }
 
   // Listeners de "primeiro gesto" — usados quando o navegador bloqueia o
-  // autoplay: a música começa no primeiro clique/toque/scroll/tecla em
-  // qualquer lugar da página, sem precisar apertar o botão.
-  const eventosGesto = ["pointerdown", "touchstart", "keydown", "click"];
+  // autoplay: a música começa no primeiro clique/toque/tecla em qualquer
+  // lugar da página, sem precisar apertar o botão.
+  // Só eventos que contam como "ativação do usuário" p/ liberar o play().
+  const eventosGesto = ["pointerup", "keydown", "click"];
   function pararDeEsperarGesto() {
     eventosGesto.forEach((ev) =>
       document.removeEventListener(ev, aoPrimeiroGesto, true),
     );
   }
-  function aoPrimeiroGesto() {
+  function aoPrimeiroGesto(evento) {
     pararDeEsperarGesto();
+    // Se o gesto foi no próprio botão de música, deixa o handler dele
+    // resolver (senão a gente daria play e o clique do botão pausaria).
+    if (evento.target.closest && evento.target.closest("#btn-musica")) return;
     if (lerEstado() !== "off") tentarTocar();
   }
   function esperarGesto() {

@@ -161,10 +161,14 @@ export function abrirModalPagamento(item, valor, titulo) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export function iniciarPagamentos() {
   const botoesPagar = document.querySelectorAll(".btn-pagar-mp");
+  if (!botoesPagar.length) return;
 
   botoesPagar.forEach((botao) => {
+    if (botao.dataset.mpLigado === "1") return; // evita duplicar na navegação suave
+    botao.dataset.mpLigado = "1";
+
     botao.addEventListener("click", () => {
       const item = botao.getAttribute("data-item");
       const titulo = botao.getAttribute("data-titulo");
@@ -191,4 +195,4 @@ document.addEventListener("DOMContentLoaded", () => {
       abrirModalPagamento(item, valor, titulo);
     });
   });
-});
+}
